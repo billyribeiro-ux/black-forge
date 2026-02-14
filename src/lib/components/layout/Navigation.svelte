@@ -1,7 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores';
 	import Button from '$lib/components/ui/Button.svelte';
-	import Icon from '@iconify/svelte';
 	import { gsap } from 'gsap';
 	import { onMount } from 'svelte';
 
@@ -52,38 +50,38 @@
 
 <nav
 	bind:this={navRef}
-	class="fixed top-0 left-0 right-0 z-fixed transition-all duration-300"
+	class="z-fixed fixed top-0 right-0 left-0 transition-all duration-300"
 	class:bg-forge-black={isScrolled}
 	class:backdrop-blur-md={isScrolled}
 	class:shadow-lg={isScrolled}
 >
 	<div class="container-forge">
-		<div class="flex h-18 md:h-20 items-center justify-between">
+		<div class="flex h-18 items-center justify-between md:h-20">
 			<!-- Logo -->
-			<a href="/" class="flex flex-col group">
+			<a href="/" class="group flex flex-col">
 				<div class="flex items-center gap-2">
-					<span class="font-clash text-xl font-bold text-forge-white tracking-tight">
+					<span class="font-clash text-forge-white text-xl font-bold tracking-tight">
 						BLACKFORGE
 					</span>
 					<span
-						class="w-2 h-2 rounded-full bg-forge-ember pulse-ember group-hover:scale-125 transition-transform"
+						class="bg-forge-ember pulse-ember h-2 w-2 rounded-full transition-transform group-hover:scale-125"
 					></span>
 				</div>
-				<span class="font-general text-[10px] uppercase tracking-[0.375em] text-forge-ash">
+				<span class="font-general text-forge-ash text-[10px] tracking-[0.375em] uppercase">
 					Digital
 				</span>
 			</a>
 
 			<!-- Desktop Navigation -->
-			<div class="hidden lg:flex items-center gap-9">
+			<div class="hidden items-center gap-9 lg:flex">
 				{#each navLinks as link}
 					<a
 						href={link.href}
-						class="relative font-satoshi text-sm uppercase tracking-wider text-forge-smoke hover:text-forge-ember transition-colors duration-200 group"
+						class="font-satoshi text-forge-smoke hover:text-forge-ember group relative text-sm tracking-wider uppercase transition-colors duration-200"
 					>
 						{link.label}
 						<span
-							class="absolute bottom-0 left-0 w-0 h-0.5 bg-forge-ember group-hover:w-full transition-all duration-300 origin-left"
+							class="bg-forge-ember absolute bottom-0 left-0 h-0.5 w-0 origin-left transition-all duration-300 group-hover:w-full"
 						></span>
 					</a>
 				{/each}
@@ -101,20 +99,20 @@
 			<!-- Mobile Menu Button -->
 			<button
 				onclick={toggleMobileMenu}
-				class="lg:hidden flex flex-col gap-1.5 w-6 h-6 justify-center items-center group"
+				class="group flex h-6 w-6 flex-col items-center justify-center gap-1.5 lg:hidden"
 				aria-label="Toggle menu"
 			>
 				<span
-					class="w-6 h-0.5 bg-forge-white transition-all duration-300"
+					class="bg-forge-white h-0.5 w-6 transition-all duration-300"
 					class:rotate-45={isMobileMenuOpen}
 					class:translate-y-2={isMobileMenuOpen}
 				></span>
 				<span
-					class="w-6 h-0.5 bg-forge-white transition-all duration-300"
+					class="bg-forge-white h-0.5 w-6 transition-all duration-300"
 					class:opacity-0={isMobileMenuOpen}
 				></span>
 				<span
-					class="w-6 h-0.5 bg-forge-white transition-all duration-300"
+					class="bg-forge-white h-0.5 w-6 transition-all duration-300"
 					class:-rotate-45={isMobileMenuOpen}
 					class:-translate-y-2={isMobileMenuOpen}
 				></span>
@@ -125,16 +123,18 @@
 	<!-- Mobile Menu Overlay -->
 	{#if isMobileMenuOpen}
 		<div
-			class="fixed inset-0 top-18 bg-forge-black z-50 lg:hidden"
+			class="bg-forge-black fixed inset-0 top-18 z-50 lg:hidden"
 			onclick={toggleMobileMenu}
+			onkeydown={(e) => e.key === 'Escape' && toggleMobileMenu()}
 			role="dialog"
 			aria-modal="true"
+			tabindex="-1"
 		>
-			<div class="container-forge py-12 flex flex-col items-center gap-8">
+			<div class="container-forge flex flex-col items-center gap-8 py-12">
 				{#each navLinks as link}
 					<a
 						href={link.href}
-						class="mobile-menu-item font-clash text-3xl font-semibold text-forge-white hover:text-forge-ember transition-colors"
+						class="mobile-menu-item font-clash text-forge-white hover:text-forge-ember text-3xl font-semibold transition-colors"
 						onclick={toggleMobileMenu}
 					>
 						{link.label}

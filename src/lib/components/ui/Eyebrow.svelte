@@ -22,7 +22,7 @@
 
 <div class={classes} {...restProps}>
 	{#if withLine}
-		<span class="h-px w-10 bg-forge-ember"></span>
+		<span class="bg-forge-ember h-px w-10"></span>
 	{/if}
 	{@render children()}
 </div>

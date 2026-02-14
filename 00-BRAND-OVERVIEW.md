@@ -19,28 +19,28 @@ Connecticut's identity is forged in industry — brass, steel, precision manufac
 
 ### Color Palette
 
-| Token             | Hex       | Usage                                    |
-|-------------------|-----------|------------------------------------------|
-| `--forge-black`   | `#0A0A0A` | Primary background, text                 |
-| `--forge-charcoal`| `#1A1A1A` | Card backgrounds, elevated surfaces      |
-| `--forge-steel`   | `#2D2D2D` | Borders, dividers, secondary surfaces    |
-| `--forge-ash`     | `#8A8A8A` | Body text on dark, muted labels          |
-| `--forge-smoke`   | `#C4C4C4` | Secondary text on dark                   |
-| `--forge-white`   | `#F5F5F0` | Primary text on dark, headings           |
-| `--forge-ember`   | `#FF4D00` | Primary accent — CTAs, highlights, hover |
-| `--forge-glow`    | `#FF6B2B` | Hover state, gradient endpoint           |
-| `--forge-heat`    | `#FF8C42` | Tertiary warm accent                     |
-| `--forge-blue`    | `#0066FF` | Links, secondary accent, trust signals   |
+| Token              | Hex       | Usage                                    |
+| ------------------ | --------- | ---------------------------------------- |
+| `--forge-black`    | `#0A0A0A` | Primary background, text                 |
+| `--forge-charcoal` | `#1A1A1A` | Card backgrounds, elevated surfaces      |
+| `--forge-steel`    | `#2D2D2D` | Borders, dividers, secondary surfaces    |
+| `--forge-ash`      | `#8A8A8A` | Body text on dark, muted labels          |
+| `--forge-smoke`    | `#C4C4C4` | Secondary text on dark                   |
+| `--forge-white`    | `#F5F5F0` | Primary text on dark, headings           |
+| `--forge-ember`    | `#FF4D00` | Primary accent — CTAs, highlights, hover |
+| `--forge-glow`     | `#FF6B2B` | Hover state, gradient endpoint           |
+| `--forge-heat`     | `#FF8C42` | Tertiary warm accent                     |
+| `--forge-blue`     | `#0066FF` | Links, secondary accent, trust signals   |
 
 ### Typography
 
-| Role          | Font                    | Weight       | Notes                                    |
-|---------------|-------------------------|--------------|------------------------------------------|
-| Display/H1    | **Clash Display**       | 600–700      | Geometric, sharp, high-impact            |
-| Headings H2–H4| **Satoshi**             | 500–700      | Clean geometric sans, modern authority   |
-| Body          | **General Sans**        | 400–500      | Highly readable, warm geometric          |
-| Code/Mono     | **JetBrains Mono**      | 400          | Technical credibility                    |
-| Accent/Nav    | **Space Grotesk** *(sparingly)* | 500  | Navigation labels, badges               |
+| Role           | Font                            | Weight  | Notes                                  |
+| -------------- | ------------------------------- | ------- | -------------------------------------- |
+| Display/H1     | **Clash Display**               | 600–700 | Geometric, sharp, high-impact          |
+| Headings H2–H4 | **Satoshi**                     | 500–700 | Clean geometric sans, modern authority |
+| Body           | **General Sans**                | 400–500 | Highly readable, warm geometric        |
+| Code/Mono      | **JetBrains Mono**              | 400     | Technical credibility                  |
+| Accent/Nav     | **Space Grotesk** _(sparingly)_ | 500     | Navigation labels, badges              |
 
 > Fonts sourced from Fontshare (free for commercial use) and Google Fonts.
 
@@ -58,7 +58,7 @@ Connecticut's identity is forged in industry — brass, steel, precision manufac
 
 ## Tagline Options
 
-1. **"Forged for Performance."** *(primary)*
+1. **"Forged for Performance."** _(primary)_
 2. "Where Code Meets Craft."
 3. "Precision-Built Digital."
 4. "Engineered to Convert."
@@ -87,16 +87,16 @@ Connecticut's identity is forged in industry — brass, steel, precision manufac
 
 ## Site Architecture
 
-| #  | Page             | File                          |
-|----|------------------|-------------------------------|
-| 01 | Home / Landing   | `01-HOME.md`                  |
-| 02 | Services         | `02-SERVICES.md`              |
-| 03 | Portfolio        | `03-PORTFOLIO.md`             |
-| 04 | About            | `04-ABOUT.md`                 |
-| 05 | Process          | `05-PROCESS.md`               |
-| 06 | Pricing          | `06-PRICING.md`               |
-| 07 | Blog             | `07-BLOG.md`                  |
-| 08 | Contact          | `08-CONTACT.md`               |
+| #   | Page           | File              |
+| --- | -------------- | ----------------- |
+| 01  | Home / Landing | `01-HOME.md`      |
+| 02  | Services       | `02-SERVICES.md`  |
+| 03  | Portfolio      | `03-PORTFOLIO.md` |
+| 04  | About          | `04-ABOUT.md`     |
+| 05  | Process        | `05-PROCESS.md`   |
+| 06  | Pricing        | `06-PRICING.md`   |
+| 07  | Blog           | `07-BLOG.md`      |
+| 08  | Contact        | `08-CONTACT.md`   |
 
 ---
 

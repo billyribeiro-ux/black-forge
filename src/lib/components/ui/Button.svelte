@@ -9,7 +9,9 @@
 		children: Snippet;
 		href?: string;
 		type?: 'button' | 'submit' | 'reset';
-		[key: string]: any;
+		disabled?: boolean;
+		onclick?: (e: MouseEvent) => void;
+		[key: string]: unknown;
 	}
 
 	let {

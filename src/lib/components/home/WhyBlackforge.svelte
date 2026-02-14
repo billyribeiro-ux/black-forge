@@ -7,8 +7,7 @@
 		{
 			number: '01',
 			label: 'No Templates. Ever.',
-			description:
-				"Every project is custom-coded. We don't reskin — we build from scratch."
+			description: "Every project is custom-coded. We don't reskin — we build from scratch."
 		},
 		{
 			number: '02',
@@ -19,8 +18,7 @@
 		{
 			number: '03',
 			label: 'Full-Stack Ownership',
-			description:
-				'Front-end, back-end, infrastructure, SEO — one team owns the entire stack.'
+			description: 'Front-end, back-end, infrastructure, SEO — one team owns the entire stack.'
 		},
 		{
 			number: '04',
@@ -33,14 +31,14 @@
 
 <Section background="black" padding="lg">
 	<Container>
-		<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+		<div class="grid grid-cols-1 items-center gap-16 lg:grid-cols-2 lg:gap-24">
 			<!-- Left Column - Copy -->
 			<div>
 				<Eyebrow withLine={true} class="mb-6">Why Us</Eyebrow>
-				<h2 class="font-clash text-4xl md:text-5xl font-semibold text-forge-white mb-8 max-w-lg">
+				<h2 class="font-clash text-forge-white mb-8 max-w-lg text-4xl font-semibold md:text-5xl">
 					Agencies Build Sites. We Engineer Outcomes.
 				</h2>
-				<div class="space-y-6 text-forge-smoke leading-relaxed">
+				<div class="text-forge-smoke space-y-6 leading-relaxed">
 					<p>
 						Most agencies hand you a WordPress template, slap on a theme, and call it custom. You
 						deserve better. Every Blackforge project is architected from the ground up on modern
@@ -54,25 +52,25 @@
 				</div>
 				<a
 					href="/process"
-					class="inline-flex items-center gap-2 text-forge-ember hover:text-forge-glow font-satoshi text-sm uppercase tracking-wider transition-colors mt-8"
+					class="text-forge-ember hover:text-forge-glow font-satoshi mt-8 inline-flex items-center gap-2 text-sm tracking-wider uppercase transition-colors"
 				>
 					See How We Work →
 				</a>
 			</div>
 
 			<!-- Right Column - Differentiator Grid -->
-			<div class="grid grid-cols-1 sm:grid-cols-2 gap-0.5 bg-forge-steel">
+			<div class="bg-forge-steel grid grid-cols-1 gap-0.5 sm:grid-cols-2">
 				{#each differentiators as item}
 					<div
-						class="bg-forge-charcoal p-8 hover:border-l-4 hover:border-l-forge-ember transition-all duration-300 group"
+						class="bg-forge-charcoal hover:border-l-forge-ember group p-8 transition-all duration-300 hover:border-l-4"
 					>
-						<div class="font-clash text-5xl font-semibold text-forge-ember/30 mb-3">
+						<div class="font-clash text-forge-ember/30 mb-3 text-5xl font-semibold">
 							{item.number}
 						</div>
-						<h3 class="font-satoshi text-lg font-semibold text-forge-white mb-2">
+						<h3 class="font-satoshi text-forge-white mb-2 text-lg font-semibold">
 							{item.label}
 						</h3>
-						<p class="text-sm text-forge-ash leading-relaxed">
+						<p class="text-forge-ash text-sm leading-relaxed">
 							{item.description}
 						</p>
 					</div>

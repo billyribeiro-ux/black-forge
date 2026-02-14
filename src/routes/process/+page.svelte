@@ -107,10 +107,10 @@
 		{
 			question: 'How long does a typical project take?',
 			answer:
-				'Most projects launch in 10-16 weeks. Simple marketing sites can be faster (6-8 weeks), while complex web applications may take longer (16-24 weeks). You'll have a detailed timeline before we start.'
+				"Most projects launch in 10-16 weeks. Simple marketing sites can be faster (6-8 weeks), while complex web applications may take longer (16-24 weeks). You'll have a detailed timeline before we start."
 		},
 		{
-			question: 'Do I own the code when it's done?',
+			question: "Do I own the code when it's done?",
 			answer:
 				'100%. Full source code, full documentation, full repository access. You can take it anywhere. We earn your continued business through results, not vendor lock-in.'
 		},
@@ -151,12 +151,12 @@
 	<Container>
 		<div class="max-w-4xl py-16">
 			<Eyebrow class="mb-6">How We Work</Eyebrow>
-			<h1 class="font-clash text-5xl md:text-6xl font-bold text-forge-white mb-6">
+			<h1 class="font-clash text-forge-white mb-6 text-5xl font-bold md:text-6xl">
 				Precision Has a Process.
 			</h1>
-			<p class="text-xl text-forge-smoke leading-relaxed max-w-2xl">
-				Every Blackforge project follows a proven 6-phase framework designed to eliminate
-				surprises, maintain quality, and deliver on time. Here's exactly what to expect.
+			<p class="text-forge-smoke max-w-2xl text-xl leading-relaxed">
+				Every Blackforge project follows a proven 6-phase framework designed to eliminate surprises,
+				maintain quality, and deliver on time. Here's exactly what to expect.
 			</p>
 		</div>
 	</Container>
@@ -166,36 +166,40 @@
 {#each phases as phase, i}
 	<Section background={i % 2 === 0 ? 'black' : 'charcoal'} padding="lg">
 		<Container>
-			<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+			<div class="grid grid-cols-1 items-start gap-16 lg:grid-cols-2">
 				<div class="relative {i % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}">
 					<div
-						class="absolute -left-8 -top-12 font-clash text-9xl font-bold text-forge-ember/15 pointer-events-none"
+						class="font-clash text-forge-ember/15 pointer-events-none absolute -top-12 -left-8 text-9xl font-bold"
 					>
 						{phase.number}
 					</div>
 					<div class="relative z-10">
 						<div
-							class="inline-block px-3 py-1 bg-forge-ember/10 border border-forge-ember text-forge-ember font-jetbrains text-xs uppercase tracking-wider mb-4"
+							class="bg-forge-ember/10 border-forge-ember text-forge-ember font-jetbrains mb-4 inline-block border px-3 py-1 text-xs tracking-wider uppercase"
 						>
 							Phase {phase.number}
 						</div>
-						<h2 class="font-clash text-4xl md:text-5xl font-semibold text-forge-white mb-4">
+						<h2 class="font-clash text-forge-white mb-4 text-4xl font-semibold md:text-5xl">
 							{phase.title}
 						</h2>
 						<div
-							class="inline-block px-4 py-2 bg-forge-charcoal text-forge-smoke font-general text-sm mb-6"
+							class="bg-forge-charcoal text-forge-smoke font-general mb-6 inline-block px-4 py-2 text-sm"
 						>
 							{phase.duration}
 						</div>
-						<p class="text-lg text-forge-smoke leading-relaxed mb-8">
+						<p class="text-forge-smoke mb-8 text-lg leading-relaxed">
 							{phase.description}
 						</p>
 						<div>
-							<h3 class="font-satoshi font-semibold text-forge-white mb-4">What You Get:</h3>
+							<h3 class="font-satoshi text-forge-white mb-4 font-semibold">What You Get:</h3>
 							<ul class="space-y-3">
 								{#each phase.deliverables as deliverable}
 									<li class="flex items-start gap-3">
-										<Icon icon="ph:check-circle" class="text-forge-ember shrink-0 mt-1" width="20" />
+										<Icon
+											icon="ph:check-circle"
+											class="text-forge-ember mt-1 shrink-0"
+											width="20"
+										/>
 										<span class="text-forge-ash">{deliverable}</span>
 									</li>
 								{/each}
@@ -205,7 +209,7 @@
 				</div>
 
 				<div class="flex items-center justify-center {i % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}">
-					<div class="w-full h-96 bg-forge-steel/20 rounded-sm flex items-center justify-center">
+					<div class="bg-forge-steel/20 flex h-96 w-full items-center justify-center rounded-sm">
 						<span class="text-forge-ash text-sm">Phase {phase.number} Visual</span>
 					</div>
 				</div>
@@ -217,31 +221,31 @@
 <!-- TIMELINE -->
 <Section background="black" padding="lg">
 	<Container size="narrow">
-		<div class="text-center mb-12">
-			<h2 class="font-clash text-4xl md:text-5xl font-semibold text-forge-white mb-4">
+		<div class="mb-12 text-center">
+			<h2 class="font-clash text-forge-white mb-4 text-4xl font-semibold md:text-5xl">
 				Typical Timeline
 			</h2>
 			<p class="text-forge-smoke">Most projects complete in 10-16 weeks from kickoff to launch.</p>
 		</div>
 
 		<div class="space-y-4">
-			{#each [ { phase: 'Phase 1 — Discovery', weeks: 2, start: 0 }, { phase: 'Phase 2 — Design', weeks: 3, start: 2 }, { phase: 'Phase 3 — Engineering', weeks: 7, start: 5 }, { phase: 'Phase 4 — QA', weeks: 2, start: 12 }, { phase: 'Phase 5 — Launch', weeks: 1, start: 14 }, { phase: 'Phase 6 — Growth', weeks: 4, start: 15, ongoing: true } ] as item}
+			{#each [{ phase: 'Phase 1 — Discovery', weeks: 2, start: 0 }, { phase: 'Phase 2 — Design', weeks: 3, start: 2 }, { phase: 'Phase 3 — Engineering', weeks: 7, start: 5 }, { phase: 'Phase 4 — QA', weeks: 2, start: 12 }, { phase: 'Phase 5 — Launch', weeks: 1, start: 14 }, { phase: 'Phase 6 — Growth', weeks: 4, start: 15, ongoing: true }] as item}
 				<div class="flex items-center gap-4">
-					<div class="w-48 shrink-0 font-satoshi text-sm text-forge-white">
+					<div class="font-satoshi text-forge-white w-48 shrink-0 text-sm">
 						{item.phase}
 					</div>
-					<div class="flex-1 h-12 bg-forge-charcoal relative overflow-hidden">
+					<div class="bg-forge-charcoal relative h-12 flex-1 overflow-hidden">
 						<div
-							class="absolute top-0 bottom-0 bg-gradient-to-r from-forge-ember to-forge-glow"
+							class="from-forge-ember to-forge-glow absolute top-0 bottom-0 bg-linear-to-r"
 							style="left: {(item.start / 19) * 100}%; width: {(item.weeks / 19) * 100}%;"
 						></div>
 						{#if item.ongoing}
 							<div
-								class="absolute top-0 bottom-0 right-0 w-8 bg-gradient-to-r from-forge-glow to-transparent opacity-50"
+								class="from-forge-glow absolute top-0 right-0 bottom-0 w-8 bg-linear-to-r to-transparent opacity-50"
 							></div>
 						{/if}
 					</div>
-					<div class="w-24 shrink-0 font-jetbrains text-xs text-forge-ash text-right">
+					<div class="font-jetbrains text-forge-ash w-24 shrink-0 text-right text-xs">
 						{item.ongoing ? 'Ongoing' : `Weeks ${item.start + 1}-${item.start + item.weeks}`}
 					</div>
 				</div>
@@ -253,18 +257,18 @@
 <!-- FAQ -->
 <Section background="charcoal" padding="lg">
 	<Container size="narrow">
-		<div class="text-center mb-12">
-			<h2 class="font-clash text-4xl md:text-5xl font-semibold text-forge-white">
+		<div class="mb-12 text-center">
+			<h2 class="font-clash text-forge-white text-4xl font-semibold md:text-5xl">
 				Questions We Get Asked.
 			</h2>
 		</div>
 
-		<div class="space-y-px bg-forge-steel">
+		<div class="bg-forge-steel space-y-px">
 			{#each faqs as faq, i}
 				<div class="bg-forge-black">
 					<button
 						onclick={() => toggleFaq(i)}
-						class="w-full flex items-center justify-between p-6 text-left hover:bg-forge-charcoal transition-colors group"
+						class="hover:bg-forge-charcoal group flex w-full items-center justify-between p-6 text-left transition-colors"
 					>
 						<span
 							class="font-satoshi text-lg font-medium {openFaqIndex === i
@@ -282,7 +286,7 @@
 						/>
 					</button>
 					{#if openFaqIndex === i}
-						<div class="px-6 pb-6 text-forge-ash leading-relaxed">
+						<div class="text-forge-ash px-6 pb-6 leading-relaxed">
 							{faq.answer}
 						</div>
 					{/if}
@@ -295,14 +299,14 @@
 <!-- CTA -->
 <Section background="black" padding="lg">
 	<div
-		class="py-24 px-8 text-center"
+		class="px-8 py-24 text-center"
 		style="background: linear-gradient(135deg, var(--forge-ember) 0%, var(--forge-glow) 100%);"
 	>
 		<Container size="narrow">
-			<h2 class="font-clash text-4xl md:text-5xl font-bold text-forge-black mb-6">
+			<h2 class="font-clash text-forge-black mb-6 text-4xl font-bold md:text-5xl">
 				Enough Reading. Let's Talk.
 			</h2>
-			<p class="text-lg text-forge-black/80 mb-10">
+			<p class="text-forge-black/80 mb-10 text-lg">
 				Book a free strategy call and we'll walk you through exactly how this process applies to
 				your project.
 			</p>

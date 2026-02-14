@@ -7,6 +7,7 @@
 ## SECTION 1 — HERO
 
 ### Layout
+
 - **Type:** 50vh, minimal hero — let the work take center stage fast
 - **Background:** `--forge-black` with subtle diagonal grid lines at 3% opacity
 - **Container:** Max-width 1400px, centered, flex column, `justify-center`
@@ -15,12 +16,15 @@
 
 **Eyebrow:** "PORTFOLIO"
 **Heading H1:** "Proof. Not Promises."
+
 - Font: Clash Display 700, 56px, `--forge-white`
 
 **Subheadline:** "Every project below was engineered from scratch. No templates. No page builders. Real code, real results, real businesses transformed."
+
 - Font: General Sans 400, 18px, `--forge-smoke`, max-width 640px
 
 **Filter Bar (margin-top 40px):**
+
 - Horizontal flex, gap 12px
 - Pill-style filter buttons:
   - "All" | "Web Development" | "App Development" | "SEO" | "E-Commerce"
@@ -35,6 +39,7 @@
 ## SECTION 2 — PROJECT GRID
 
 ### Layout
+
 - **Background:** `--forge-black`
 - **Padding:** 80px 0 120px
 - **Container:** Max-width 1400px, centered
@@ -48,11 +53,13 @@
 ### Project Card Component
 
 **Card Structure:**
+
 - Aspect ratio: Varies (16:10 for wide, 4:3 for square, 3:4 for tall)
 - Overflow hidden, border-radius: 0 (sharp edges — the forge aesthetic)
 - Position: relative
 
 **Default State:**
+
 - Full project screenshot/mockup fills the card
 - Subtle dark overlay gradient at bottom: `linear-gradient(transparent 50%, rgba(10, 10, 10, 0.8) 100%)`
 - Bottom-left text overlay:
@@ -60,6 +67,7 @@
   - Category tag: JetBrains Mono 400, 11px, `--forge-ember`, uppercase
 
 **Hover State (entire card):**
+
 - Image scales to 1.05 (600ms ease-out)
 - Overlay darkens to 70% black
 - Full info reveals:
@@ -72,6 +80,7 @@
 ### Sample Project Cards (8-12 total)
 
 **Card 1 — Wide (60%)**
+
 - Image: E-commerce storefront mockup in browser frame
 - Name: "Meridian Home Goods"
 - Category: E-Commerce
@@ -79,6 +88,7 @@
 - Stack: SvelteKit · Shopify Headless · Cloudflare Workers
 
 **Card 2 — Narrow (40%)**
+
 - Image: Mobile app on phone mockup
 - Name: "PulseTrack Fitness"
 - Category: App Development
@@ -86,6 +96,7 @@
 - Stack: React Native · Node.js · PostgreSQL
 
 **Card 3 — Narrow (40%)**
+
 - Image: Dashboard UI screenshot
 - Name: "Atlas Financial Dashboard"
 - Category: Web Application
@@ -93,6 +104,7 @@
 - Stack: React · TypeScript · WebSockets · AWS
 
 **Card 4 — Wide (60%)**
+
 - Image: Law firm website
 - Name: "Sterling & Associates"
 - Category: Web + SEO
@@ -100,6 +112,7 @@
 - Stack: SvelteKit · Sanity CMS · Schema Markup
 
 **Card 5 — Equal (33%)**
+
 - Image: Restaurant website
 - Name: "Ember Kitchen & Bar"
 - Category: Web Development
@@ -107,6 +120,7 @@
 - Stack: Astro · Tailwind · Cloudflare
 
 **Card 6 — Equal (33%)**
+
 - Image: Real estate platform
 - Name: "Keystone Properties"
 - Category: Web Application
@@ -114,6 +128,7 @@
 - Stack: Next.js · PostgreSQL · Mapbox
 
 **Card 7 — Equal (33%)**
+
 - Image: Medical practice site
 - Name: "Northside Medical Group"
 - Category: Web + Local SEO
@@ -121,6 +136,7 @@
 - Stack: SvelteKit · Structured Data · GBP Optimization
 
 **Card 8 — Wide (50/50)**
+
 - Image: SaaS platform
 - Name: "FlowState Project Management"
 - Category: Web Application
@@ -128,6 +144,7 @@
 - Stack: SvelteKit · Rust/Axum · PostgreSQL · Redis
 
 ### Load More
+
 - Below grid: "Load More Projects" button
 - Style: Ghost button, `--forge-steel` border, `--forge-smoke` text
 - Loads 4 more cards with fade-in animation
@@ -139,6 +156,7 @@
 > Each project card links to a full case study page. Here's the template:
 
 ### Case Study Hero
+
 - **Background:** Full-width project screenshot/mockup, darkened 60%
 - **Overlay content:**
   - Category badge: `--forge-ember` pill
@@ -148,34 +166,41 @@
 ### Case Study Body
 
 **Results Bar (sticky or prominent):**
+
 - 3-4 key metrics in horizontal flex
 - Example: "2.3x Conversion" | "0.8s Load Time" | "$2.1M Revenue" | "95+ Lighthouse"
 - Numbers: Clash Display 600, 36px, `--forge-ember`
 - Labels: General Sans 400, 12px, `--forge-ash`
 
 **Section: The Challenge**
+
 - What problem the client had, why they came to us, what had failed before
 - 2-3 paragraphs, General Sans 400, 16px, `--forge-smoke`
 
 **Section: Our Approach**
+
 - What we did and why (technical and strategic)
 - Can include inline code snippets, architecture diagrams
 - Custom SVG diagrams in `--forge-ember` + `--forge-steel` color scheme
 
 **Section: The Build**
+
 - Tech decisions explained
 - Before/after screenshots in side-by-side comparison frames
 - Performance benchmark comparisons (Lighthouse before vs. after)
 
 **Section: The Results**
+
 - Data-driven results with visual charts (Recharts or D3)
 - Timeline of improvements (month-over-month growth)
 
 **Section: Client Testimonial**
+
 - Quoted feedback with attribution
 - Same styling as home testimonials
 
 **Next Project CTA:**
+
 - "Next Project: [Name] →"
 - Full-width strip at bottom linking to the next case study
 
@@ -184,15 +209,18 @@
 ## SECTION 4 — INDUSTRY EXPERIENCE
 
 ### Layout
+
 - **Background:** `--forge-charcoal`
 - **Padding:** 100px 0
 - **Container:** Max-width 1200px, centered, text-align center
 
 ### Content
+
 **Heading H2:** "Industries We've Transformed"
 **Subtext:** "Deep experience across verticals means we understand your market, your users, and your competitive landscape."
 
 **Industry Grid:**
+
 - Layout: 4 columns, 2 rows, gap 20px
 - Each cell: `--forge-black` background, padding 32px, text-align center
 - Icon: Custom SVG, 36px, `--forge-ember`, centered

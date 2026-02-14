@@ -17,7 +17,7 @@
 	/>
 </svelte:head>
 
-<div class="min-h-screen flex flex-col">
+<div class="flex min-h-screen flex-col">
 	<Navigation />
 	<main class="flex-1 pt-18 md:pt-20">
 		{@render children()}

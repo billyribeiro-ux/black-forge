@@ -37,12 +37,12 @@
 
 <Section background="charcoal" padding="lg">
 	<Container>
-		<div class="text-center mb-16">
+		<div class="mb-16 text-center">
 			<Eyebrow class="mb-4 justify-center">Selected Projects</Eyebrow>
-			<h2 class="font-clash text-4xl md:text-5xl font-semibold text-forge-white mb-6">
+			<h2 class="font-clash text-forge-white mb-6 text-4xl font-semibold md:text-5xl">
 				Work That Speaks for Itself.
 			</h2>
-			<p class="text-lg text-forge-smoke max-w-2xl mx-auto">
+			<p class="text-forge-smoke mx-auto max-w-2xl text-lg">
 				A selection of recent projects across industries. Every one built custom. Every one still
 				performing.
 			</p>
@@ -51,38 +51,40 @@
 		<div class="space-y-0.5">
 			{#each projects as project, i}
 				<div
-					class="flex flex-col {i % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} bg-forge-black group hover:bg-forge-charcoal transition-colors duration-500"
+					class="flex flex-col {i % 2 === 0
+						? 'lg:flex-row'
+						: 'lg:flex-row-reverse'} bg-forge-black group hover:bg-forge-charcoal transition-colors duration-500"
 				>
 					<!-- Image Side -->
-					<div class="lg:w-3/5 relative overflow-hidden aspect-video lg:aspect-auto">
+					<div class="relative aspect-video overflow-hidden lg:aspect-auto lg:w-3/5">
 						<div
-							class="w-full h-full bg-forge-steel flex items-center justify-center text-forge-ash group-hover:scale-105 transition-transform duration-700"
+							class="bg-forge-steel text-forge-ash flex h-full w-full items-center justify-center transition-transform duration-700 group-hover:scale-105"
 						>
 							<!-- Placeholder for project image -->
 							<span class="text-sm">Project Screenshot</span>
 						</div>
 						<div
-							class="absolute inset-0 bg-gradient-to-t from-forge-ember/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+							class="from-forge-ember/10 absolute inset-0 bg-linear-to-t to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
 						></div>
 					</div>
 
 					<!-- Content Side -->
-					<div class="lg:w-2/5 p-12 lg:p-16 flex flex-col justify-center">
+					<div class="flex flex-col justify-center p-12 lg:w-2/5 lg:p-16">
 						<div
-							class="inline-block px-3 py-1 border border-forge-ember text-forge-ember font-jetbrains text-xs uppercase tracking-wider mb-5"
+							class="border-forge-ember text-forge-ember font-jetbrains mb-5 inline-block border px-3 py-1 text-xs tracking-wider uppercase"
 						>
 							{project.category}
 						</div>
-						<h3 class="font-clash text-3xl font-semibold text-forge-white mb-4 leading-tight">
+						<h3 class="font-clash text-forge-white mb-4 text-3xl leading-tight font-semibold">
 							{project.title}
 						</h3>
-						<p class="text-forge-smoke leading-relaxed mb-6">
+						<p class="text-forge-smoke mb-6 leading-relaxed">
 							{project.description}
 						</p>
-						<div class="flex flex-wrap gap-2 mb-8">
+						<div class="mb-8 flex flex-wrap gap-2">
 							{#each project.stack as tech}
 								<span
-									class="px-3 py-1 border border-forge-steel text-forge-ash font-jetbrains text-xs"
+									class="border-forge-steel text-forge-ash font-jetbrains border px-3 py-1 text-xs"
 								>
 									{tech}
 								</span>
@@ -90,17 +92,17 @@
 						</div>
 						<a
 							href={project.href}
-							class="inline-flex items-center gap-2 text-forge-ember hover:text-forge-glow font-satoshi text-sm uppercase tracking-wider transition-colors group/link"
+							class="text-forge-ember hover:text-forge-glow font-satoshi group/link inline-flex items-center gap-2 text-sm tracking-wider uppercase transition-colors"
 						>
 							View Case Study
-							<span class="group-hover/link:translate-x-1 transition-transform">→</span>
+							<span class="transition-transform group-hover/link:translate-x-1">→</span>
 						</a>
 					</div>
 				</div>
 			{/each}
 		</div>
 
-		<div class="text-center mt-16">
+		<div class="mt-16 text-center">
 			<Button variant="primary" size="lg" href="/portfolio">
 				{#snippet children()}
 					View All Projects →

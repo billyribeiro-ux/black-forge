@@ -7,6 +7,7 @@
 ## SECTION 1 — HERO
 
 ### Layout
+
 - **Type:** 55vh
 - **Background:** `--forge-black` with vertical blueprint lines: repeating thin `--forge-steel` lines at 80px intervals, 4% opacity
 - **Container:** Max-width 1400px, centered
@@ -15,12 +16,15 @@
 
 **Eyebrow:** "HOW WE WORK"
 **Heading H1:** "Precision Has a Process."
+
 - Font: Clash Display 700, 56px, `--forge-white`
 
 **Subheadline:** "Every Blackforge project follows a proven 6-phase framework designed to eliminate surprises, maintain quality, and deliver on time. Here's exactly what to expect."
+
 - Font: General Sans 400, 18px, `--forge-smoke`, max-width 640px
 
 **Visual Timeline Indicator:**
+
 - Horizontal line with 6 numbered dots, connecting the hero to the sections below
 - Line: 2px `--forge-steel`, spans max-width 800px, centered
 - Dots: 12px circles, numbered 1-6, `--forge-steel` fill, `--forge-ash` number text
@@ -33,6 +37,7 @@
 > Each phase is a distinct visual section that the user scrolls through. The timeline indicator (fixed on desktop) tracks progress.
 
 ### Sticky Timeline (Desktop Only)
+
 - Position: Fixed, right side, vertically centered
 - Vertical line (200px) with 6 dots
 - Active phase dot: `--forge-ember`, scale 1.3
@@ -44,6 +49,7 @@
 ### PHASE 1 — DISCOVERY & STRATEGY
 
 ### Layout
+
 - **Background:** `--forge-black`
 - **Padding:** 120px 0
 - **Container:** Max-width 1400px, centered
@@ -52,20 +58,25 @@
 ### Left Column
 
 **Phase Tag:**
+
 - "PHASE 01" — JetBrains Mono 400, 13px, `--forge-ember`, letterspacing 3px
 - Horizontal line (40px, 2px, `--forge-ember`) after text
 
 **Heading H2:** "Discovery & Strategy"
+
 - Font: Clash Display 600, 40px, `--forge-white`
 
 **Duration Badge:**
+
 - "1-2 Weeks" — Pill, `--forge-charcoal` background, `--forge-smoke` text, General Sans 500, 12px, padding 6px 16px
 
 **Description:**
+
 - "Before a single line of code is written, we deep-dive into your business, your market, your competitors, and your users. This phase produces the strategic blueprint that every decision is built on."
 - Font: General Sans 400, 16px, `--forge-smoke`, line-height 1.8
 
 **Deliverables List:**
+
 - Heading: "What You Get:" — Satoshi 600, 15px, `--forge-white`, margin-top 28px
 - Each deliverable: Flex row, ember dot + text
   - Competitive analysis & market positioning report
@@ -77,12 +88,14 @@
 - Font: General Sans 400, 14px, `--forge-ash`
 
 ### Right Column — Visual
+
 - Illustration concept: A stylized blueprint/wireframe sketch emerging from an anvil
 - Style: Thin line illustration, `--forge-ember` strokes on `--forge-charcoal` background
 - Elements: Document icons, magnifying glass, chart, user silhouettes — all in a constellation layout
 - Alternative: A dark mockup of an actual strategy document/report with Blackforge branding
 
 ### Animation
+
 - Phase tag slides in from left
 - Content staggers in below
 - Right visual draws in (SVG path animation)
@@ -92,6 +105,7 @@
 ### PHASE 2 — DESIGN & PROTOTYPING
 
 ### Layout
+
 - **Background:** `--forge-charcoal` (alternating)
 - **Same 2-column structure, reversed:** Visual left (45%), Content right (55%)
 
@@ -102,6 +116,7 @@
 **Description:** "Design isn't decoration — it's communication. We create high-fidelity designs and interactive prototypes that you can click through, test, and approve before development begins. No surprises when the site launches."
 
 **Deliverables:**
+
 - Brand integration & visual direction
 - High-fidelity desktop & mobile mockups (Figma)
 - Interactive prototype for key user flows
@@ -110,6 +125,7 @@
 - Client review & revision rounds (2 included)
 
 **Left Visual:**
+
 - Figma-style design mockup with layers visible, showing a website being designed
 - Overlapping artboards, ruler guides, `--forge-ember` selection handles
 - Subtle hover parallax effect
@@ -119,6 +135,7 @@
 ### PHASE 3 — ENGINEERING & DEVELOPMENT
 
 ### Layout
+
 - **Background:** `--forge-black`
 - **Visual right, content left**
 
@@ -129,6 +146,7 @@
 **Description:** "This is where the forge fires up. Our engineers hand-code every component using modern frameworks and TypeScript strict mode. No page builders, no shortcuts. You get production-grade code that performs, scales, and lasts."
 
 **Deliverables:**
+
 - Custom frontend development (SvelteKit/React/Next.js)
 - Backend & API architecture
 - CMS integration & content modeling
@@ -137,6 +155,7 @@
 - Weekly progress demos & staging access
 
 **Right Visual:**
+
 - Code editor mockup showing clean TypeScript/Svelte code
 - Dark theme (VS Code style), `--forge-ember` syntax highlights
 - Blurred slightly to prevent readability but convey "real code"
@@ -147,6 +166,7 @@
 ### PHASE 4 — TESTING & QA
 
 ### Layout
+
 - **Background:** `--forge-charcoal`
 - **Visual left, content right**
 
@@ -157,6 +177,7 @@
 **Description:** "Nothing ships until it's tested across every browser, every device, and every edge case. We run automated tests, manual QA, accessibility audits, and performance benchmarks. If it doesn't meet our standards, it doesn't ship."
 
 **Deliverables:**
+
 - Cross-browser testing (Chrome, Firefox, Safari, Edge)
 - Device testing (iOS, Android, tablet, desktop)
 - Accessibility audit (WCAG 2.1 AA compliance)
@@ -165,6 +186,7 @@
 - Security vulnerability scan
 
 **Left Visual:**
+
 - Checklist/test report mockup with green checkmarks
 - Browser icons with status indicators
 - Lighthouse score gauge showing 98 in `--forge-ember`
@@ -174,11 +196,13 @@
 ### PHASE 5 — LAUNCH
 
 ### Layout
+
 - **Background:** `--forge-black`
 - **Full-width centered moment — this phase gets dramatic treatment**
 
 **Phase Tag:** "PHASE 05"
 **Heading H2 (centered, large):** "Launch Day."
+
 - Font: Clash Display 700, 56px, `--forge-white`
 - Special treatment: Subtle ember glow behind the text
 
@@ -187,6 +211,7 @@
 **Description (centered):** "Deployment is choreographed, not chaotic. DNS switches, SSL certificates, redirects, analytics — everything is handled. You wake up to a live site that works perfectly."
 
 **Launch Checklist (centered, styled differently):**
+
 - Displayed as a vertical timeline with checkmarks
 - Each item: Flex row, `--forge-ember` check icon + text
   - DNS configuration & SSL setup
@@ -204,6 +229,7 @@
 ### PHASE 6 — GROWTH & OPTIMIZATION
 
 ### Layout
+
 - **Background:** `--forge-charcoal`
 - **Content left, visual right**
 
@@ -214,6 +240,7 @@
 **Description:** "Launch isn't the finish line — it's the starting line. We monitor performance, analyze user behavior, and continuously optimize. Your site gets better every month, not worse."
 
 **Deliverables:**
+
 - Monthly performance reports
 - Core Web Vitals monitoring
 - Conversion rate optimization (CRO)
@@ -222,6 +249,7 @@
 - Priority support & bug fixes (SLA-backed)
 
 **Right Visual:**
+
 - Dashboard mockup showing upward-trending charts
 - `--forge-ember` line chart on dark background
 - Key metrics: Traffic ↑, Conversions ↑, Speed maintained
@@ -232,11 +260,13 @@
 ## SECTION 3 — TIMELINE OVERVIEW
 
 ### Layout
+
 - **Background:** `--forge-black`
 - **Padding:** 100px 0
 - **Container:** Max-width 1200px, centered
 
 ### Heading
+
 **H2:** "Typical Timeline"
 **Sub:** "Most projects complete in 10-16 weeks from kickoff to launch."
 
@@ -264,15 +294,19 @@ Phase 6 — Growth                                   ████████ (O
 ## SECTION 4 — FAQ
 
 ### Layout
+
 - **Background:** `--forge-charcoal`
 - **Padding:** 100px 0
 - **Container:** Max-width 800px, centered
 
 ### Heading
+
 **H2:** "Questions We Get Asked."
 
 ### Accordion FAQ
+
 **Style:**
+
 - Each question: Full-width row, border-bottom 1px `--forge-steel`
 - Padding: 24px 0
 - Question text: Satoshi 500, 17px, `--forge-white`

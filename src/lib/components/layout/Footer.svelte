@@ -28,24 +28,24 @@
 	];
 </script>
 
-<footer class="bg-forge-black border-t border-forge-steel">
+<footer class="bg-forge-black border-forge-steel border-t">
 	<div class="container-forge py-20">
 		<!-- Top Row - 4 Column Grid -->
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-12">
+		<div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4 lg:gap-12">
 			<!-- Column 1 - Brand -->
 			<div class="lg:col-span-2">
-				<a href="/" class="flex flex-col mb-5">
+				<a href="/" class="mb-5 flex flex-col">
 					<div class="flex items-center gap-2">
-						<span class="font-clash text-xl font-bold text-forge-white tracking-tight">
+						<span class="font-clash text-forge-white text-xl font-bold tracking-tight">
 							BLACKFORGE
 						</span>
-						<span class="w-2 h-2 rounded-full bg-forge-ember pulse-ember"></span>
+						<span class="bg-forge-ember pulse-ember h-2 w-2 rounded-full"></span>
 					</div>
-					<span class="font-general text-[10px] uppercase tracking-[0.375em] text-forge-ash">
+					<span class="font-general text-forge-ash text-[10px] tracking-[0.375em] uppercase">
 						Digital
 					</span>
 				</a>
-				<p class="text-sm text-forge-ash leading-relaxed max-w-sm mb-6">
+				<p class="text-forge-ash mb-6 max-w-sm text-sm leading-relaxed">
 					Precision-built web development, app development, and SEO for businesses that refuse to
 					settle.
 				</p>
@@ -66,7 +66,9 @@
 
 			<!-- Column 2 - Services -->
 			<div>
-				<h3 class="font-satoshi text-sm font-semibold uppercase tracking-wider text-forge-white mb-5">
+				<h3
+					class="font-satoshi text-forge-white mb-5 text-sm font-semibold tracking-wider uppercase"
+				>
 					Services
 				</h3>
 				<ul class="space-y-3">
@@ -74,7 +76,7 @@
 						<li>
 							<a
 								href={link.href}
-								class="text-sm text-forge-ash hover:text-forge-white transition-colors duration-200"
+								class="text-forge-ash hover:text-forge-white text-sm transition-colors duration-200"
 							>
 								{link.label}
 							</a>
@@ -85,7 +87,9 @@
 
 			<!-- Column 3 - Company -->
 			<div>
-				<h3 class="font-satoshi text-sm font-semibold uppercase tracking-wider text-forge-white mb-5">
+				<h3
+					class="font-satoshi text-forge-white mb-5 text-sm font-semibold tracking-wider uppercase"
+				>
 					Company
 				</h3>
 				<ul class="space-y-3">
@@ -93,7 +97,7 @@
 						<li>
 							<a
 								href={link.href}
-								class="text-sm text-forge-ash hover:text-forge-white transition-colors duration-200"
+								class="text-forge-ash hover:text-forge-white text-sm transition-colors duration-200"
 							>
 								{link.label}
 							</a>
@@ -105,22 +109,22 @@
 
 		<!-- Bottom Row - Copyright -->
 		<div
-			class="flex flex-col md:flex-row justify-between items-center gap-4 mt-12 pt-8 border-t border-forge-steel"
+			class="border-forge-steel mt-12 flex flex-col items-center justify-between gap-4 border-t pt-8 md:flex-row"
 		>
-			<p class="text-sm text-forge-ash">
+			<p class="text-forge-ash text-sm">
 				© {currentYear} Blackforge Digital. All rights reserved.
 			</p>
 			<div class="flex items-center gap-6">
 				<a
 					href="/privacy"
-					class="text-sm text-forge-ash hover:text-forge-white transition-colors duration-200"
+					class="text-forge-ash hover:text-forge-white text-sm transition-colors duration-200"
 				>
 					Privacy Policy
 				</a>
 				<span class="text-forge-steel">·</span>
 				<a
 					href="/terms"
-					class="text-sm text-forge-ash hover:text-forge-white transition-colors duration-200"
+					class="text-forge-ash hover:text-forge-white text-sm transition-colors duration-200"
 				>
 					Terms of Service
 				</a>

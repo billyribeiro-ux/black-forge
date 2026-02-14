@@ -7,6 +7,7 @@
 ## SECTION 1 — HERO
 
 ### Layout
+
 - **Type:** Full viewport height on desktop, auto on mobile
 - **Background:** `--forge-black` with dual effect:
   1. Large radial gradient bottom-left: `radial-gradient(ellipse at 20% 80%, rgba(255, 77, 0, 0.06) 0%, transparent 50%)`
@@ -21,10 +22,12 @@
 
 **Eyebrow:** "LET'S BUILD"
 **Heading H1:** "Your Move."
+
 - Font: Clash Display 700, 56px, `--forge-white`
 - Special: Period in `--forge-ember`
 
 **Subheadline:**
+
 - Text: "Every great project starts with a conversation. Tell us what you're building, and we'll tell you exactly how we'd approach it. No commitment. No pitch deck. Just a real talk."
 - Font: General Sans 400, 17px, `--forge-smoke`, line-height 1.8, max-width 440px
 
@@ -33,6 +36,7 @@
 **Section label:** "DIRECT CONTACT" — JetBrains Mono 400, 11px, `--forge-ember`, letterspacing 3px, uppercase, margin-bottom 20px
 
 **Email:**
+
 - Icon: Mail icon, 20px, `--forge-ember`
 - Text: "hello@blackforge.digital"
 - Font: General Sans 400, 16px, `--forge-white`
@@ -40,12 +44,14 @@
 - Click: `mailto:` link
 
 **Phone:**
+
 - Icon: Phone icon, 20px, `--forge-ember`
 - Text: "(203) XXX-XXXX"
 - Font: General Sans 400, 16px, `--forge-white`
 - Click: `tel:` link
 
 **Location:**
+
 - Icon: Map pin icon, 20px, `--forge-ember`
 - Text: "Wolcott, Connecticut 06716"
 - Font: General Sans 400, 16px, `--forge-smoke`
@@ -56,12 +62,14 @@
 ### Response Time (margin-top 40px)
 
 **Badge-style info block:**
+
 - Background: `--forge-charcoal`
 - Padding: 20px 24px
 - Border-left: 3px `--forge-ember`
 - Max-width: 380px
 
 **Content:**
+
 - Icon: Clock icon, 16px, `--forge-ember`, inline before text
 - Text: "Average response time: under 4 hours during business hours."
 - Font: General Sans 400, 14px, `--forge-smoke`
@@ -71,6 +79,7 @@
 **Section label:** "FOLLOW US" — JetBrains Mono 400, 11px, `--forge-ash`, letterspacing 3px
 
 **Social icons:** Horizontal flex, gap 20px, margin-top 12px
+
 - LinkedIn, X/Twitter, Instagram, GitHub, Dribbble
 - Icon size: 24px, `--forge-ash`
 - Hover: `--forge-ember`, `translateY(-2px)`, 200ms
@@ -89,12 +98,14 @@
 ### RIGHT COLUMN — Contact Form
 
 **Form Container:**
+
 - Background: `--forge-charcoal`
 - Padding: 48px 40px
 - Border: 1px `--forge-steel`
 - Position: relative
 
 **Form Header:**
+
 - Text: "Start Your Project"
 - Font: Satoshi 700, 24px, `--forge-white`
 - Subtext: "Fill out the form below and we'll get back to you within one business day."
@@ -105,6 +116,7 @@
 **Layout:** Vertical stack, gap 20px, margin-top 32px
 
 **Field Style (all inputs/textareas):**
+
 - Background: `--forge-black`
 - Border: 1px `--forge-steel`
 - Padding: 14px 18px
@@ -115,18 +127,21 @@
 - Required indicator: Small `--forge-ember` asterisk after label
 
 **Field 1 — Name:**
+
 - Type: text
-- Label: "Full Name *"
+- Label: "Full Name \*"
 - Placeholder: "John Smith"
 - Full width
 
 **Field 2 — Email:**
+
 - Type: email
-- Label: "Email Address *"
+- Label: "Email Address \*"
 - Placeholder: "john@company.com"
 - Full width
 
 **Field 3 — Phone:**
+
 - Type: tel
 - Label: "Phone Number"
 - Placeholder: "(203) 555-0100"
@@ -134,6 +149,7 @@
 - Not required
 
 **Field 4 — Company:**
+
 - Type: text
 - Label: "Company / Organization"
 - Placeholder: "Acme Corp"
@@ -141,8 +157,9 @@
 - Not required
 
 **Field 5 — Service Interest:**
+
 - Type: Select dropdown
-- Label: "What Do You Need? *"
+- Label: "What Do You Need? \*"
 - Options:
   - "Select a service..."
   - "Web Development"
@@ -155,6 +172,7 @@
 - Open state: Options on `--forge-charcoal`, hover highlight `--forge-ember` at 10% opacity
 
 **Field 6 — Budget Range:**
+
 - Type: Select dropdown
 - Label: "Budget Range"
 - Options:
@@ -168,14 +186,16 @@
 - Not required
 
 **Field 7 — Project Details:**
+
 - Type: textarea
-- Label: "Tell Us About Your Project *"
+- Label: "Tell Us About Your Project \*"
 - Placeholder: "What are you building? What problems are you solving? What does success look like?"
 - Height: 140px
 - Full width
 - Character count: Bottom-right corner, General Sans 400, 11px, `--forge-ash` — "0 / 2000"
 
 **Field 8 — How Did You Find Us:**
+
 - Type: Select dropdown
 - Label: "How Did You Find Us?"
 - Options:
@@ -193,6 +213,7 @@
 **Layout:** Full-width, margin-top 28px
 
 **Style:**
+
 - Background: `--forge-ember`
 - Text: "Submit Your Project →" — Satoshi 600, 15px, uppercase, letterspacing 1.5px, `--forge-white`
 - Padding: 18px
@@ -201,10 +222,12 @@
 - Active: `translateY(0)`, darker ember
 
 **Loading State:**
+
 - Text replaced with spinner animation (small dots rotating) + "Sending..."
 - Button disabled, opacity 0.8
 
 **Success State:**
+
 - Background transitions to `#2D8A4E` (success green)
 - Text: "✓ Message Sent!"
 - After 2 seconds, shows success message panel
@@ -212,11 +235,13 @@
 ### Form Validation
 
 **Inline validation:**
+
 - Error state: Border → `#FF4444` (red), error message below field
 - Error message: General Sans 400, 12px, `#FF4444`, margin-top 4px
 - Success state: Border → `#2D8A4E` (green), check icon appears inside field right side
 
 **Error Messages:**
+
 - Name: "Please enter your name"
 - Email: "Please enter a valid email address"
 - Service: "Please select a service"
@@ -227,23 +252,28 @@
 ## SECTION 2 — SUCCESS STATE (After Form Submit)
 
 ### Layout
+
 - Replaces the form container (smooth transition)
 - Same `--forge-charcoal` background and dimensions
 
 ### Content (centered)
 
 **Check Icon:**
+
 - Large circle (64px), `--forge-ember` border, check mark SVG inside
 - Animation: Scale 0 → 1 with bounce, 400ms
 
 **Heading:** "We're On It."
+
 - Font: Clash Display 600, 32px, `--forge-white`
 
 **Message:**
+
 - "Thank you for reaching out. We'll review your project details and get back to you within one business day — usually much sooner."
 - Font: General Sans 400, 16px, `--forge-smoke`, max-width 440px
 
 **What Happens Next (margin-top 32px):**
+
 - Label: "WHAT HAPPENS NEXT" — JetBrains Mono 400, 11px, `--forge-ember`
 - Steps (vertical timeline style):
   1. "We review your project details" — within hours
@@ -252,6 +282,7 @@
 - Each: Flex row, ember dot + text, General Sans 400, 14px, `--forge-smoke`
 
 **Secondary CTA:**
+
 - "While you wait, check out our recent work →" — Satoshi 500, 14px, `--forge-ember`
 - Links to Portfolio page
 
@@ -260,6 +291,7 @@
 ## SECTION 3 — MAP & LOCATION
 
 ### Layout
+
 - **Background:** `--forge-black`
 - **Padding:** 80px 0
 - **Container:** Full-width
@@ -267,6 +299,7 @@
 ### Content
 
 **Interactive Map:**
+
 - Full-width dark-themed map (Mapbox GL JS with custom dark style)
 - Color scheme: Dark roads, `--forge-charcoal` buildings, `--forge-steel` labels, `--forge-ember` pin
 - Centered on Wolcott, CT
@@ -282,29 +315,35 @@
 ## SECTION 4 — QUICK CONTACT ALTERNATIVES
 
 ### Layout
+
 - **Background:** `--forge-charcoal`
 - **Padding:** 80px 0
 - **Container:** Max-width 1200px, centered
 
 ### Heading (centered)
+
 **H3:** "Prefer a Different Way to Connect?"
 
 ### 3-Column Cards
+
 **Layout:** 3 equal columns, gap 24px
 
 **Each Card:**
+
 - Background: `--forge-black`
 - Padding: 36px 32px, text-align center
 - Border: 1px `--forge-steel`
 - Hover: Border → `--forge-ember`, `translateY(-4px)`
 
 **Card 1 — Email Us:**
+
 - Icon: Mail, 32px, `--forge-ember`
 - Title: "Email Us Directly" — Satoshi 600, 18px, `--forge-white`
 - Text: "hello@blackforge.digital" — General Sans 400, 15px, `--forge-smoke`
 - CTA: "Send Email →" — `--forge-ember`
 
 **Card 2 — Call Us:**
+
 - Icon: Phone, 32px, `--forge-ember`
 - Title: "Call Our Team" — Satoshi 600, 18px, `--forge-white`
 - Text: "(203) XXX-XXXX" — General Sans 400, 15px, `--forge-smoke`
@@ -312,6 +351,7 @@
 - CTA: "Call Now →" — `--forge-ember`
 
 **Card 3 — Schedule a Call:**
+
 - Icon: Calendar, 32px, `--forge-ember`
 - Title: "Book a Strategy Call" — Satoshi 600, 18px, `--forge-white`
 - Text: "Pick a time that works for you" — General Sans 400, 15px, `--forge-smoke`
@@ -323,6 +363,7 @@
 ## PAGE-LEVEL NOTES
 
 ### Form Backend
+
 - Custom serverless endpoint (Vercel Edge Function or Cloudflare Worker)
 - No third-party form services (no Formspree, no Typeform embeds)
 - Sends notification to:
@@ -333,18 +374,21 @@
 - CAPTCHA: Invisible reCAPTCHA v3 or Cloudflare Turnstile (no visible checkbox)
 
 ### SEO
+
 - Title: "Contact Blackforge Digital | Web Development & SEO Agency in Wolcott, CT"
 - Meta Description: "Start your next web development, app development, or SEO project with Blackforge Digital. Based in Wolcott, Connecticut. Get a free strategy consultation."
 - Schema: LocalBusiness markup with address, phone, hours
 - Open Graph: Custom image showing the contact page design
 
 ### Conversion Tracking
+
 - Form submit event: Google Analytics 4 + Google Ads conversion pixel
 - Phone click event: GA4 event tracking
 - Email click event: GA4 event tracking
 - Calendly booking: Webhook → GA4
 
 ### Accessibility
+
 - All form fields have associated `<label>` elements
 - Error messages linked via `aria-describedby`
 - Focus visible states on all interactive elements

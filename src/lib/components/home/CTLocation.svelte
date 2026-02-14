@@ -7,29 +7,29 @@
 
 <Section background="black" padding="lg">
 	<Container>
-		<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+		<div class="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
 			<!-- Left Column - Content -->
 			<div>
 				<Eyebrow withLine={true} class="mb-6">Wolcott, Connecticut</Eyebrow>
-				<h2 class="font-clash text-4xl md:text-5xl font-semibold text-forge-white mb-6">
+				<h2 class="font-clash text-forge-white mb-6 text-4xl font-semibold md:text-5xl">
 					Built in Connecticut. Trusted Nationwide.
 				</h2>
-				<p class="text-lg text-forge-smoke leading-relaxed mb-8">
+				<p class="text-forge-smoke mb-8 text-lg leading-relaxed">
 					Headquartered in Wolcott, CT, we serve businesses across the state and beyond. From
 					Hartford to New Haven, Waterbury to Greenwich — if you demand digital excellence, we're
 					your team.
 				</p>
 
 				<div class="space-y-4">
-					<div class="flex items-center gap-3 text-forge-smoke">
+					<div class="text-forge-smoke flex items-center gap-3">
 						<Icon icon="ph:check-circle" class="text-forge-ember" width="20" />
 						<span>Serving Connecticut since 2014</span>
 					</div>
-					<div class="flex items-center gap-3 text-forge-smoke">
+					<div class="text-forge-smoke flex items-center gap-3">
 						<Icon icon="ph:check-circle" class="text-forge-ember" width="20" />
 						<span>Clients across 12+ CT towns</span>
 					</div>
-					<div class="flex items-center gap-3 text-forge-smoke">
+					<div class="text-forge-smoke flex items-center gap-3">
 						<Icon icon="ph:check-circle" class="text-forge-ember" width="20" />
 						<span>Top-rated on Google (5.0 ★★★★★)</span>
 					</div>
@@ -37,20 +37,16 @@
 			</div>
 
 			<!-- Right Column - Map Visual -->
-			<div class="relative h-96 bg-forge-charcoal rounded-sm overflow-hidden">
+			<div class="bg-forge-charcoal relative h-96 overflow-hidden rounded-sm">
 				<div class="absolute inset-0 flex items-center justify-center">
 					<!-- Stylized CT Map Placeholder -->
-					<div class="relative w-full h-full flex items-center justify-center">
+					<div class="relative flex h-full w-full items-center justify-center">
 						<div class="text-center">
-							<div
-								class="w-4 h-4 rounded-full bg-forge-ember pulse-ember mx-auto mb-4 relative"
-							>
-								<div
-									class="absolute inset-0 rounded-full bg-forge-ember/30 animate-ping"
-								></div>
+							<div class="bg-forge-ember pulse-ember relative mx-auto mb-4 h-4 w-4 rounded-full">
+								<div class="bg-forge-ember/30 absolute inset-0 animate-ping rounded-full"></div>
 							</div>
 							<div class="font-satoshi text-forge-white font-semibold">Wolcott, CT</div>
-							<div class="text-sm text-forge-ash">06716</div>
+							<div class="text-forge-ash text-sm">06716</div>
 						</div>
 					</div>
 				</div>

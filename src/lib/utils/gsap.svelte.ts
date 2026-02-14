@@ -1,20 +1,34 @@
 /**
- * GSAP utilities for Svelte 5
- * Using runes and modern Svelte 5 patterns
+ * GSAP utilities for Svelte 5 with proper cleanup and lifecycle management.
+ * 
+ * This module provides hooks and utilities for integrating GSAP animations
+ * with Svelte 5's reactive system. All animations are automatically cleaned up
+ * when components unmount to prevent memory leaks.
+ * 
+ * @module gsap.svelte
  */
+
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { onMount } from 'svelte';
 
-// Register GSAP plugins
 if (typeof window !== 'undefined') {
 	gsap.registerPlugin(ScrollTrigger);
 }
 
 /**
+ * Hook for GSAP animations with automatic cleanup.
+ * 
+ * This hook provides a way to create GSAP animations that are automatically
+ * cleaned up when the component unmounts. It also provides an option to
+ * watch dependencies and re-run the animation when they change.
+ * 
+ * @param {function} animationFn - The function that returns the GSAP animation.
+ * @param {function} [dependencies] - The function that returns the dependencies to watch.
+ * @returns {void}
  * Hook for GSAP animations with automatic cleanup
  * Usage in Svelte 5 components:
- * 
+ *
  * let ref = $state<HTMLElement>();
  * useGsap(() => {
  *   gsap.from(ref, { opacity: 0, y: 20 });
@@ -51,10 +65,7 @@ export function useGsap(
 /**
  * Scroll-triggered animation hook
  */
-export function useScrollTrigger(
-	element: HTMLElement | null,
-	config: ScrollTrigger.Vars
-) {
+export function useScrollTrigger(element: HTMLElement | null, config: ScrollTrigger.Vars) {
 	let trigger: ScrollTrigger | null = null;
 
 	onMount(() => {
@@ -144,7 +155,7 @@ export function staggerAnimation(
  */
 export function countUp(
 	element: HTMLElement,
-	target: number,
+	targetValue: number,
 	options: {
 		duration?: number;
 		delay?: number;
@@ -154,17 +165,21 @@ export function countUp(
 ) {
 	const { duration = 1.2, delay = 0, decimals = 0, suffix = '' } = options;
 
-	return gsap.from(element, {
-		textContent: 0,
-		duration,
-		delay,
-		ease: 'power1.inOut',
-		snap: { textContent: decimals === 0 ? 1 : 1 / Math.pow(10, decimals) },
-		onUpdate: function () {
-			const value = gsap.getProperty(element, 'textContent') as number;
-			element.textContent = value.toFixed(decimals) + suffix;
+	return gsap.fromTo(
+		element,
+		{ textContent: 0 },
+		{
+			textContent: targetValue,
+			duration,
+			delay,
+			ease: 'power1.inOut',
+			snap: { textContent: decimals === 0 ? 1 : 1 / Math.pow(10, decimals) },
+			onUpdate: function () {
+				const value = gsap.getProperty(element, 'textContent') as number;
+				element.textContent = value.toFixed(decimals) + suffix;
+			}
 		}
-	});
+	);
 }
 
 /**

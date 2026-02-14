@@ -124,16 +124,16 @@
 	<Container>
 		<div class="max-w-4xl py-16">
 			<Eyebrow class="mb-6">Investment</Eyebrow>
-			<h1 class="font-clash text-5xl md:text-6xl font-bold text-forge-white mb-6">
+			<h1 class="font-clash text-forge-white mb-6 text-5xl font-bold md:text-6xl">
 				Transparent Pricing. No Surprises.
 			</h1>
-			<p class="text-xl text-forge-smoke leading-relaxed max-w-2xl mb-8">
+			<p class="text-forge-smoke mb-8 max-w-2xl text-xl leading-relaxed">
 				We don't hide behind "contact us for a quote." Here's what quality digital work costs — and
 				why it's worth every dollar.
 			</p>
-			<div class="flex items-center gap-3 text-forge-ember">
+			<div class="text-forge-ember flex items-center gap-3">
 				<Icon icon="ph:shield-check" width="24" />
-				<span class="font-jetbrains text-sm uppercase tracking-wider">
+				<span class="font-jetbrains text-sm tracking-wider uppercase">
 					Fixed-price proposals. No hourly billing. No scope creep charges.
 				</span>
 			</div>
@@ -144,46 +144,46 @@
 <!-- PRICING TIERS -->
 <Section background="black" padding="lg">
 	<Container>
-		<div class="grid grid-cols-1 lg:grid-cols-3 gap-px bg-forge-steel">
+		<div class="bg-forge-steel grid grid-cols-1 gap-px lg:grid-cols-3">
 			{#each tiers as tier}
 				<div
-					class="bg-forge-charcoal p-12 relative {tier.recommended
-						? 'lg:-mt-8 lg:mb-0 lg:pt-16 lg:pb-16 border-t-4 border-t-forge-ember'
+					class="bg-forge-charcoal relative p-12 {tier.recommended
+						? 'border-t-forge-ember border-t-4 lg:-mt-8 lg:mb-0 lg:pt-16 lg:pb-16'
 						: ''}"
 				>
 					{#if tier.recommended}
 						<div
-							class="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-forge-ember text-forge-black font-jetbrains text-xs uppercase tracking-wider"
+							class="bg-forge-ember text-forge-black font-jetbrains absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 text-xs tracking-wider uppercase"
 						>
 							Most Popular
 						</div>
 					{/if}
 
 					<div class="mb-6">
-						<div class="font-satoshi text-sm uppercase tracking-wider text-forge-ash mb-2">
+						<div class="font-satoshi text-forge-ash mb-2 text-sm tracking-wider uppercase">
 							{tier.name}
 						</div>
-						<div class="flex items-baseline gap-2 mb-4">
-							<span class="text-sm text-forge-ash">Starting at</span>
-							<span class="font-clash text-5xl font-bold text-forge-white">{tier.price}</span>
+						<div class="mb-4 flex items-baseline gap-2">
+							<span class="text-forge-ash text-sm">Starting at</span>
+							<span class="font-clash text-forge-white text-5xl font-bold">{tier.price}</span>
 						</div>
-						<p class="text-sm text-forge-ash leading-relaxed">{tier.description}</p>
+						<p class="text-forge-ash text-sm leading-relaxed">{tier.description}</p>
 					</div>
 
-					<div class="h-px bg-forge-steel my-6"></div>
+					<div class="bg-forge-steel my-6 h-px"></div>
 
-					<ul class="space-y-3 mb-8">
+					<ul class="mb-8 space-y-3">
 						{#each tier.features as feature}
 							<li class="flex items-start gap-3">
-								<Icon icon="ph:check" class="text-forge-ember shrink-0 mt-0.5" width="18" />
-								<span class="text-sm text-forge-smoke">{feature}</span>
+								<Icon icon="ph:check" class="text-forge-ember mt-0.5 shrink-0" width="18" />
+								<span class="text-forge-smoke text-sm">{feature}</span>
 							</li>
 						{/each}
 					</ul>
 
 					<div class="mb-6">
-						<div class="text-xs font-jetbrains text-forge-ash italic mb-2">Ideal For:</div>
-						<div class="text-sm text-forge-ash">{tier.idealFor}</div>
+						<div class="font-jetbrains text-forge-ash mb-2 text-xs italic">Ideal For:</div>
+						<div class="text-forge-ash text-sm">{tier.idealFor}</div>
 					</div>
 
 					<Button
@@ -206,24 +206,24 @@
 <Section background="charcoal" padding="lg">
 	<Container>
 		<div class="mb-12">
-			<h2 class="font-clash text-4xl md:text-5xl font-semibold text-forge-white mb-4">
+			<h2 class="font-clash text-forge-white mb-4 text-4xl font-semibold md:text-5xl">
 				Add-On Services
 			</h2>
 			<p class="text-forge-smoke">Layer these onto any tier for enhanced results.</p>
 		</div>
 
-		<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+		<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
 			{#each addons as addon}
 				<div
-					class="bg-forge-black p-8 flex items-start gap-6 border-l-2 border-l-forge-steel hover:border-l-forge-ember transition-colors"
+					class="bg-forge-black border-l-forge-steel hover:border-l-forge-ember flex items-start gap-6 border-l-2 p-8 transition-colors"
 				>
 					<Icon icon={addon.icon} class="text-forge-ember shrink-0" width="32" />
 					<div class="flex-1">
-						<h3 class="font-satoshi text-lg font-semibold text-forge-white mb-1">
+						<h3 class="font-satoshi text-forge-white mb-1 text-lg font-semibold">
 							{addon.title}
 						</h3>
-						<p class="text-sm text-forge-ash mb-3">{addon.description}</p>
-						<div class="font-clash text-xl font-semibold text-forge-ember">{addon.price}</div>
+						<p class="text-forge-ash mb-3 text-sm">{addon.description}</p>
+						<div class="font-clash text-forge-ember text-xl font-semibold">{addon.price}</div>
 					</div>
 				</div>
 			{/each}
@@ -234,11 +234,11 @@
 <!-- PRICING PHILOSOPHY -->
 <Section background="black" padding="lg">
 	<Container size="narrow">
-		<h2 class="font-clash text-4xl md:text-5xl font-semibold text-forge-white mb-8">
+		<h2 class="font-clash text-forge-white mb-8 text-4xl font-semibold md:text-5xl">
 			Why We Charge What We Charge.
 		</h2>
 
-		<div class="space-y-6 text-forge-smoke leading-relaxed text-lg">
+		<div class="text-forge-smoke space-y-6 text-lg leading-relaxed">
 			<p>
 				Custom development costs more than a Squarespace template. That's because a Squarespace
 				template doesn't generate revenue — it just exists. Our builds are engineered to pay for
@@ -261,8 +261,8 @@
 <!-- COMPARISON -->
 <Section background="charcoal" padding="lg">
 	<Container size="narrow">
-		<div class="text-center mb-12">
-			<h2 class="font-clash text-4xl md:text-5xl font-semibold text-forge-white">
+		<div class="mb-12 text-center">
+			<h2 class="font-clash text-forge-white text-4xl font-semibold md:text-5xl">
 				The Real Cost of Cheap
 			</h2>
 		</div>
@@ -270,30 +270,36 @@
 		<div class="overflow-x-auto">
 			<table class="w-full border-collapse">
 				<thead>
-					<tr class="border-b-2 border-forge-steel">
-						<th class="text-left p-4 font-satoshi text-sm uppercase tracking-wider text-forge-white">
+					<tr class="border-forge-steel border-b-2">
+						<th
+							class="font-satoshi text-forge-white p-4 text-left text-sm tracking-wider uppercase"
+						>
 							Feature
 						</th>
-						<th class="text-center p-4 font-satoshi text-sm uppercase tracking-wider text-forge-white">
+						<th
+							class="font-satoshi text-forge-white p-4 text-center text-sm tracking-wider uppercase"
+						>
 							DIY / Template
 						</th>
-						<th class="text-center p-4 font-satoshi text-sm uppercase tracking-wider text-forge-white">
+						<th
+							class="font-satoshi text-forge-white p-4 text-center text-sm tracking-wider uppercase"
+						>
 							Cheap Agency
 						</th>
 						<th
-							class="text-center p-4 font-satoshi text-sm uppercase tracking-wider text-forge-ember bg-forge-ember/10"
+							class="font-satoshi text-forge-ember bg-forge-ember/10 p-4 text-center text-sm tracking-wider uppercase"
 						>
 							Blackforge
 						</th>
 					</tr>
 				</thead>
 				<tbody>
-					{#each [ ['Cost', '$0 – $500', '$2,000 – $8,000', '$8,000 – $50,000+'], ['Performance', 'Slow (3-5s load)', 'Mediocre (2-3s)', 'Blazing (<1s)'], ['SEO', 'Basic / None', 'Plugin-dependent', 'Built into architecture'], ['Mobile', 'Responsive (barely)', 'Responsive', 'Mobile-first engineered'], ['Ownership', 'Platform lock-in', 'Maybe', 'Full code ownership'], ['Scalability', 'Breaks under growth', 'Needs rebuild in 2 yrs', 'Built for 10 years'], ['Support', 'Forum / chatbot', 'Outsourced', 'Dedicated senior team'], ['ROI (Year 1)', 'Minimal', 'Low', '2-3x average'] ] as [feature, diy, cheap, blackforge]}
-						<tr class="border-b border-forge-steel">
-							<td class="p-4 text-forge-smoke">{feature}</td>
-							<td class="p-4 text-center text-forge-ash/50 text-sm">{diy}</td>
-							<td class="p-4 text-center text-forge-ash/50 text-sm">{cheap}</td>
-							<td class="p-4 text-center text-forge-ember font-semibold text-sm bg-forge-ember/5">
+					{#each [['Cost', '$0 – $500', '$2,000 – $8,000', '$8,000 – $50,000+'], ['Performance', 'Slow (3-5s load)', 'Mediocre (2-3s)', 'Blazing (<1s)'], ['SEO', 'Basic / None', 'Plugin-dependent', 'Built into architecture'], ['Mobile', 'Responsive (barely)', 'Responsive', 'Mobile-first engineered'], ['Ownership', 'Platform lock-in', 'Maybe', 'Full code ownership'], ['Scalability', 'Breaks under growth', 'Needs rebuild in 2 yrs', 'Built for 10 years'], ['Support', 'Forum / chatbot', 'Outsourced', 'Dedicated senior team'], ['ROI (Year 1)', 'Minimal', 'Low', '2-3x average']] as [feature, diy, cheap, blackforge]}
+						<tr class="border-forge-steel border-b">
+							<td class="text-forge-smoke p-4">{feature}</td>
+							<td class="text-forge-ash/50 p-4 text-center text-sm">{diy}</td>
+							<td class="text-forge-ash/50 p-4 text-center text-sm">{cheap}</td>
+							<td class="text-forge-ember bg-forge-ember/5 p-4 text-center text-sm font-semibold">
 								{blackforge}
 							</td>
 						</tr>
@@ -307,14 +313,14 @@
 <!-- CTA -->
 <Section background="black" padding="lg">
 	<div
-		class="py-24 px-8 text-center"
+		class="px-8 py-24 text-center"
 		style="background: linear-gradient(135deg, var(--forge-ember) 0%, var(--forge-glow) 100%);"
 	>
 		<Container size="narrow">
-			<h2 class="font-clash text-4xl md:text-5xl font-bold text-forge-black mb-6">
+			<h2 class="font-clash text-forge-black mb-6 text-4xl font-bold md:text-5xl">
 				Let's Talk Numbers.
 			</h2>
-			<p class="text-lg text-forge-black/80 mb-10">
+			<p class="text-forge-black/80 mb-10 text-lg">
 				Every project gets a detailed, fixed-price proposal. No commitment required — just a real
 				conversation about what you need and what it costs.
 			</p>

@@ -40,7 +40,7 @@
 			number: '06',
 			title: 'Build for the Long Game',
 			description:
-				'We architect for 10-year longevity. No tech debt bombs. No "you\'ll need to rebuild in 2 years." Our code is an investment, not an expense.'
+				'We architect for 10-year longevity. No tech debt bombs. No "you will need to rebuild in 2 years." Our code is an investment, not an expense.'
 		}
 	];
 
@@ -93,30 +93,30 @@
 		style="background: radial-gradient(ellipse at 30% 80%, rgba(255, 77, 0, 0.07) 0%, transparent 50%);"
 	>
 		<Container>
-			<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 py-16">
+			<div class="grid grid-cols-1 gap-16 py-16 lg:grid-cols-2">
 				<div>
 					<Eyebrow class="mb-6">About Blackforge</Eyebrow>
-					<h1 class="font-clash text-5xl md:text-6xl font-bold text-forge-white mb-6">
+					<h1 class="font-clash text-forge-white mb-6 text-5xl font-bold md:text-6xl">
 						Built Different. On Purpose.
 					</h1>
-					<p class="text-xl text-forge-smoke leading-relaxed">
+					<p class="text-forge-smoke text-xl leading-relaxed">
 						Blackforge Digital isn't a traditional agency. We're a tight engineering team that
 						builds custom digital products — websites, applications, and search strategies — for
 						businesses that can't afford to blend in.
 					</p>
 				</div>
 				<div class="flex items-center justify-center">
-					<div class="relative w-full h-96">
+					<div class="relative h-96 w-full">
 						<div
-							class="absolute inset-0 bg-forge-charcoal opacity-20"
+							class="bg-forge-charcoal absolute inset-0 opacity-20"
 							style="clip-path: polygon(0 0, 100% 20%, 100% 100%, 0 80%);"
 						></div>
 						<div
-							class="absolute inset-0 bg-forge-steel opacity-10"
+							class="bg-forge-steel absolute inset-0 opacity-10"
 							style="clip-path: polygon(0 20%, 100% 0, 100% 80%, 0 100%);"
 						></div>
 						<div
-							class="absolute inset-0 bg-forge-ember opacity-5"
+							class="bg-forge-ember absolute inset-0 opacity-5"
 							style="clip-path: polygon(20% 0, 80% 0, 100% 100%, 0 100%);"
 						></div>
 					</div>
@@ -129,12 +129,14 @@
 <!-- ORIGIN STORY -->
 <Section background="charcoal" padding="lg">
 	<Container size="narrow">
-		<h2 class="font-clash text-4xl md:text-5xl font-semibold text-forge-white mb-8">
+		<h2 class="font-clash text-forge-white mb-8 text-4xl font-semibold md:text-5xl">
 			The Forge Origin
 		</h2>
 
-		<div class="space-y-6 text-forge-smoke leading-relaxed text-lg">
-			<p class="first-letter:text-6xl first-letter:font-clash first-letter:font-bold first-letter:text-forge-ember first-letter:float-left first-letter:mr-3 first-letter:leading-none">
+		<div class="text-forge-smoke space-y-6 text-lg leading-relaxed">
+			<p
+				class="first-letter:font-clash first-letter:text-forge-ember first-letter:float-left first-letter:mr-3 first-letter:text-6xl first-letter:leading-none first-letter:font-bold"
+			>
 				Every agency says they're different. Here's how we actually are: We started Blackforge
 				because we were tired of watching businesses get burned by agencies that deliver templates
 				dressed up as "custom" work. Tired of seeing $30,000 WordPress sites that crumble under
@@ -143,13 +145,13 @@
 
 			<p>
 				We believe that building a website should be an engineering discipline — not a design
-				exercise. That the technology choices you make today determine whether your digital
-				presence compounds in value or decays into technical debt. That businesses deserve partners
-				who think in decades, not deliverables.
+				exercise. That the technology choices you make today determine whether your digital presence
+				compounds in value or decays into technical debt. That businesses deserve partners who think
+				in decades, not deliverables.
 			</p>
 
-			<div class="my-12 pl-8 border-l-4 border-forge-ember">
-				<blockquote class="font-clash text-2xl md:text-3xl text-forge-ember italic">
+			<div class="border-forge-ember my-12 border-l-4 pl-8">
+				<blockquote class="font-clash text-forge-ember text-2xl italic md:text-3xl">
 					"Businesses deserve partners who think in decades, not deliverables."
 				</blockquote>
 			</div>
@@ -173,19 +175,19 @@
 	<Container>
 		<div class="mb-16">
 			<Eyebrow withLine={true} class="mb-6">What We Stand For</Eyebrow>
-			<h2 class="font-clash text-4xl md:text-5xl font-semibold text-forge-white">
+			<h2 class="font-clash text-forge-white text-4xl font-semibold md:text-5xl">
 				Principles. Not Platitudes.
 			</h2>
 		</div>
 
-		<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+		<div class="grid grid-cols-1 gap-8 md:grid-cols-2">
 			{#each values as value}
-				<div class="flex gap-6 pb-8 border-b border-forge-steel">
-					<div class="flex-shrink-0">
-						<div class="font-clash text-5xl font-bold text-forge-ember/30">{value.number}</div>
+				<div class="border-forge-steel flex gap-6 border-b pb-8">
+					<div class="shrink-0">
+						<div class="font-clash text-forge-ember/30 text-5xl font-bold">{value.number}</div>
 					</div>
 					<div>
-						<h3 class="font-satoshi text-xl font-semibold text-forge-white mb-2">
+						<h3 class="font-satoshi text-forge-white mb-2 text-xl font-semibold">
 							{value.title}
 						</h3>
 						<p class="text-forge-ash leading-relaxed">{value.description}</p>
@@ -201,38 +203,50 @@
 	<Container>
 		<div class="mb-16">
 			<Eyebrow withLine={true} class="mb-6">The Team</Eyebrow>
-			<h2 class="font-clash text-4xl md:text-5xl font-semibold text-forge-white mb-4">
+			<h2 class="font-clash text-forge-white mb-4 text-4xl font-semibold md:text-5xl">
 				Senior Talent Only.
 			</h2>
-			<p class="text-lg text-forge-smoke max-w-2xl">
+			<p class="text-forge-smoke max-w-2xl text-lg">
 				No interns. No junior devs learning on your project. Every team member has 7+ years of
 				production experience.
 			</p>
 		</div>
 
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+		<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
 			{#each team as member}
-				<div class="bg-forge-black overflow-hidden group hover:-translate-y-1 transition-transform">
+				<div class="bg-forge-black group overflow-hidden transition-transform hover:-translate-y-1">
 					<div
-						class="aspect-square bg-forge-steel grayscale group-hover:grayscale-0 transition-all duration-700 flex items-center justify-center"
+						class="bg-forge-steel flex aspect-square items-center justify-center grayscale transition-all duration-700 group-hover:grayscale-0"
 					>
 						<div
-							class="w-24 h-24 rounded-full bg-forge-charcoal border-2 border-forge-ember flex items-center justify-center text-forge-white font-clash text-3xl font-bold"
+							class="bg-forge-charcoal border-forge-ember text-forge-white font-clash flex h-24 w-24 items-center justify-center rounded-full border-2 text-3xl font-bold"
 						>
 							{member.name.charAt(0)}
 						</div>
 					</div>
 					<div class="p-6">
-						<h3 class="font-satoshi text-lg font-semibold text-forge-white mb-1">
+						<h3 class="font-satoshi text-forge-white mb-1 text-lg font-semibold">
 							{member.name}
 						</h3>
-						<div class="text-sm text-forge-ember mb-3">{member.role}</div>
-						<p class="text-sm text-forge-ash leading-relaxed mb-4">{member.bio}</p>
+						<div class="text-forge-ember mb-3 text-sm">{member.role}</div>
+						<p class="text-forge-ash mb-4 text-sm leading-relaxed">{member.bio}</p>
 						<div class="flex gap-4">
-							<a href="#" class="text-forge-ash hover:text-forge-ember transition-colors">
+							<a
+								href="https://linkedin.com"
+								target="_blank"
+								rel="noopener noreferrer"
+								class="text-forge-ash hover:text-forge-ember transition-colors"
+								aria-label="LinkedIn profile"
+							>
 								<Icon icon="ph:linkedin-logo" width="18" />
 							</a>
-							<a href="#" class="text-forge-ash hover:text-forge-ember transition-colors">
+							<a
+								href="https://github.com"
+								target="_blank"
+								rel="noopener noreferrer"
+								class="text-forge-ash hover:text-forge-ember transition-colors"
+								aria-label="GitHub profile"
+							>
 								<Icon icon="ph:github-logo" width="18" />
 							</a>
 						</div>
@@ -246,8 +260,8 @@
 <!-- TOOLS -->
 <Section background="black" padding="lg">
 	<Container size="narrow">
-		<div class="text-center mb-12">
-			<h2 class="font-clash text-4xl md:text-5xl font-semibold text-forge-white mb-4">
+		<div class="mb-12 text-center">
+			<h2 class="font-clash text-forge-white mb-4 text-4xl font-semibold md:text-5xl">
 				Our Toolkit
 			</h2>
 			<p class="text-forge-smoke">
@@ -255,12 +269,12 @@
 			</p>
 		</div>
 
-		<div class="grid grid-cols-3 md:grid-cols-6 gap-6">
+		<div class="grid grid-cols-3 gap-6 md:grid-cols-6">
 			{#each ['SvelteKit', 'React', 'Next.js', 'TypeScript', 'Rust', 'Node.js', 'PostgreSQL', 'Redis', 'Tailwind', 'GSAP', 'Figma', 'Vercel', 'AWS', 'Cloudflare', 'Docker', 'Sanity', 'Ahrefs', 'GA4'] as tech}
 				<div
-					class="aspect-square bg-forge-charcoal flex items-center justify-center opacity-40 hover:opacity-100 transition-opacity group"
+					class="bg-forge-charcoal group flex aspect-square items-center justify-center opacity-40 transition-opacity hover:opacity-100"
 				>
-					<span class="text-xs font-jetbrains text-forge-smoke text-center px-2">{tech}</span>
+					<span class="font-jetbrains text-forge-smoke px-2 text-center text-xs">{tech}</span>
 				</div>
 			{/each}
 		</div>
@@ -270,14 +284,14 @@
 <!-- CTA -->
 <Section background="black" padding="lg">
 	<div
-		class="py-24 px-8 text-center"
+		class="px-8 py-24 text-center"
 		style="background: linear-gradient(135deg, var(--forge-ember) 0%, var(--forge-glow) 100%);"
 	>
 		<Container size="narrow">
-			<h2 class="font-clash text-4xl md:text-5xl font-bold text-forge-black mb-6">
+			<h2 class="font-clash text-forge-black mb-6 text-4xl font-bold md:text-5xl">
 				Ready to Work With a Team That Actually Gives a Damn?
 			</h2>
-			<p class="text-lg text-forge-black/80 mb-10">
+			<p class="text-forge-black/80 mb-10 text-lg">
 				Let's build something that makes your competitors nervous.
 			</p>
 			<Button variant="secondary" size="lg" href="/contact">

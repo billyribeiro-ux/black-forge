@@ -51,9 +51,9 @@
 	style="background: linear-gradient(135deg, var(--forge-charcoal) 0%, var(--forge-black) 100%);"
 >
 	<Container size="narrow">
-		<div class="text-center mb-16">
+		<div class="mb-16 text-center">
 			<Eyebrow class="mb-4 justify-center">Client Words</Eyebrow>
-			<h2 class="font-clash text-4xl md:text-5xl font-semibold text-forge-white">
+			<h2 class="font-clash text-forge-white text-4xl font-semibold md:text-5xl">
 				Don't Take Our Word For It.
 			</h2>
 		</div>
@@ -61,30 +61,30 @@
 		<div class="relative">
 			<!-- Large Quote Mark -->
 			<div
-				class="absolute -top-8 -left-4 font-clash text-9xl text-forge-ember/15 leading-none pointer-events-none"
+				class="font-clash text-forge-ember/15 pointer-events-none absolute -top-8 -left-4 text-9xl leading-none"
 			>
 				"
 			</div>
 
 			<!-- Testimonial Content -->
-			<div class="relative z-10 min-h-64 flex items-center justify-center">
+			<div class="relative z-10 flex min-h-64 items-center justify-center">
 				{#each testimonials as testimonial, i}
 					{#if i === currentIndex}
-						<div class="text-center animate-fade-in">
-							<blockquote class="text-xl md:text-2xl text-forge-white italic leading-relaxed mb-8">
+						<div class="animate-fade-in text-center">
+							<blockquote class="text-forge-white mb-8 text-xl leading-relaxed italic md:text-2xl">
 								"{testimonial.quote}"
 							</blockquote>
 							<div class="flex items-center justify-center gap-4">
 								<div
-									class="w-12 h-12 rounded-full bg-forge-steel border-2 border-forge-ember flex items-center justify-center text-forge-white font-semibold"
+									class="bg-forge-steel border-forge-ember text-forge-white flex h-12 w-12 items-center justify-center rounded-full border-2 font-semibold"
 								>
 									{testimonial.author.charAt(0)}
 								</div>
 								<div class="text-left">
-									<div class="font-satoshi font-semibold text-forge-white">
+									<div class="font-satoshi text-forge-white font-semibold">
 										{testimonial.author}
 									</div>
-									<div class="text-sm text-forge-ash">
+									<div class="text-forge-ash text-sm">
 										{testimonial.title}
 									</div>
 								</div>
@@ -96,10 +96,10 @@
 
 			<!-- Navigation Dots -->
 			<div class="flex justify-center gap-3 mt-12">
-				{#each testimonials as _, i}
+				{#each testimonials as _testimonial, i}
 					<button
 						onclick={() => goToSlide(i)}
-						class="w-2 h-2 rounded-full transition-all duration-300 {i === currentIndex
+						class="h-2 w-2 rounded-full transition-all duration-300 {i === currentIndex
 							? 'bg-forge-ember w-8'
 							: 'bg-forge-steel hover:bg-forge-ash'}"
 						aria-label="Go to testimonial {i + 1}"

@@ -76,9 +76,7 @@
 	];
 
 	const filteredProjects = $derived(
-		activeFilter === 'All'
-			? projects
-			: projects.filter((p) => p.category === activeFilter)
+		activeFilter === 'All' ? projects : projects.filter((p) => p.category === activeFilter)
 	);
 </script>
 
@@ -95,10 +93,10 @@
 	<Container>
 		<div class="max-w-4xl py-16">
 			<Eyebrow class="mb-6">Portfolio</Eyebrow>
-			<h1 class="font-clash text-5xl md:text-6xl font-bold text-forge-white mb-6">
+			<h1 class="font-clash text-forge-white mb-6 text-5xl font-bold md:text-6xl">
 				Proof. Not Promises.
 			</h1>
-			<p class="text-xl text-forge-smoke leading-relaxed max-w-2xl mb-10">
+			<p class="text-forge-smoke mb-10 max-w-2xl text-xl leading-relaxed">
 				Every project below was engineered from scratch. No templates. No page builders. Real code,
 				real results, real businesses transformed.
 			</p>
@@ -107,7 +105,7 @@
 				{#each filters as filter}
 					<button
 						onclick={() => (activeFilter = filter)}
-						class="px-5 py-2.5 border font-satoshi text-sm uppercase tracking-wider transition-all {activeFilter ===
+						class="font-satoshi border px-5 py-2.5 text-sm tracking-wider uppercase transition-all {activeFilter ===
 						filter
 							? 'bg-forge-ember border-forge-ember text-forge-white'
 							: 'border-forge-steel text-forge-smoke hover:border-forge-ember'}"
@@ -123,24 +121,22 @@
 <!-- PROJECT GRID -->
 <Section background="black" padding="lg">
 	<Container>
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+		<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
 			{#each filteredProjects as project}
 				<a
 					href={project.href}
-					class="group relative overflow-hidden bg-forge-charcoal border border-forge-steel hover:border-forge-ember transition-all duration-300 hover:-translate-y-1 hover:shadow-ember-lg"
+					class="group bg-forge-charcoal border-forge-steel hover:border-forge-ember hover:shadow-ember-lg relative overflow-hidden border transition-all duration-300 hover:-translate-y-1"
 				>
 					<!-- Image -->
-					<div class="aspect-video bg-forge-steel relative overflow-hidden">
+					<div class="bg-forge-steel relative aspect-video overflow-hidden">
 						<div
-							class="w-full h-full flex items-center justify-center text-forge-ash group-hover:scale-105 transition-transform duration-700"
+							class="text-forge-ash flex h-full w-full items-center justify-center transition-transform duration-700 group-hover:scale-105"
 						>
 							<span class="text-sm">Project Screenshot</span>
 						</div>
+						<div class="from-forge-black/80 absolute inset-0 bg-linear-to-t to-transparent"></div>
 						<div
-							class="absolute inset-0 bg-linear-to-t from-forge-black/80 to-transparent"
-						></div>
-						<div
-							class="absolute bottom-4 left-4 px-2 py-1 bg-forge-ember/90 text-forge-white font-jetbrains text-xs uppercase tracking-wider"
+							class="bg-forge-ember/90 text-forge-white font-jetbrains absolute bottom-4 left-4 px-2 py-1 text-xs tracking-wider uppercase"
 						>
 							{project.category}
 						</div>
@@ -148,13 +144,17 @@
 
 					<!-- Content -->
 					<div class="p-6">
-						<h3 class="font-satoshi text-xl font-semibold text-forge-white mb-2 group-hover:text-forge-ember transition-colors">
+						<h3
+							class="font-satoshi text-forge-white group-hover:text-forge-ember mb-2 text-xl font-semibold transition-colors"
+						>
 							{project.title}
 						</h3>
-						<p class="text-sm text-forge-ember mb-4">{project.result}</p>
+						<p class="text-forge-ember mb-4 text-sm">{project.result}</p>
 						<div class="flex flex-wrap gap-2">
 							{#each project.stack.slice(0, 3) as tech}
-								<span class="px-2 py-1 border border-forge-steel text-forge-ash font-jetbrains text-xs">
+								<span
+									class="border-forge-steel text-forge-ash font-jetbrains border px-2 py-1 text-xs"
+								>
 									{tech}
 								</span>
 							{/each}
@@ -169,8 +169,8 @@
 <!-- INDUSTRIES -->
 <Section background="charcoal" padding="lg">
 	<Container size="narrow">
-		<div class="text-center mb-12">
-			<h2 class="font-clash text-4xl md:text-5xl font-semibold text-forge-white mb-4">
+		<div class="mb-12 text-center">
+			<h2 class="font-clash text-forge-white mb-4 text-4xl font-semibold md:text-5xl">
 				Industries We've Transformed
 			</h2>
 			<p class="text-forge-smoke">
@@ -179,17 +179,17 @@
 			</p>
 		</div>
 
-		<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-			{#each [ { icon: 'ph:scales', label: 'Legal & Law Firms' }, { icon: 'ph:heart-pulse', label: 'Healthcare & Medical' }, { icon: 'ph:buildings', label: 'Real Estate' }, { icon: 'ph:shopping-bag', label: 'E-Commerce & Retail' }, { icon: 'ph:chart-line', label: 'Financial Services' }, { icon: 'ph:fork-knife', label: 'Restaurant & Hospitality' }, { icon: 'ph:graduation-cap', label: 'Education & EdTech' }, { icon: 'ph:factory', label: 'Manufacturing & Industrial' } ] as industry}
+		<div class="grid grid-cols-2 gap-6 md:grid-cols-4">
+			{#each [{ icon: 'ph:scales', label: 'Legal & Law Firms' }, { icon: 'ph:heart-pulse', label: 'Healthcare & Medical' }, { icon: 'ph:buildings', label: 'Real Estate' }, { icon: 'ph:shopping-bag', label: 'E-Commerce & Retail' }, { icon: 'ph:chart-line', label: 'Financial Services' }, { icon: 'ph:fork-knife', label: 'Restaurant & Hospitality' }, { icon: 'ph:graduation-cap', label: 'Education & EdTech' }, { icon: 'ph:factory', label: 'Manufacturing & Industrial' }] as industry}
 				<div
-					class="bg-forge-black p-6 text-center hover:border-b-2 hover:border-b-forge-ember transition-all group"
+					class="bg-forge-black hover:border-b-forge-ember group p-6 text-center transition-all hover:border-b-2"
 				>
 					<div class="text-forge-ember mb-3 flex justify-center">
-						<svg class="w-9 h-9" fill="currentColor" viewBox="0 0 256 256">
+						<svg class="h-9 w-9" fill="currentColor" viewBox="0 0 256 256">
 							<rect width="256" height="256" fill="none" />
 						</svg>
 					</div>
-					<div class="font-satoshi text-sm text-forge-white">{industry.label}</div>
+					<div class="font-satoshi text-forge-white text-sm">{industry.label}</div>
 				</div>
 			{/each}
 		</div>
@@ -199,14 +199,14 @@
 <!-- CTA -->
 <Section background="black" padding="lg">
 	<div
-		class="py-24 px-8 text-center"
+		class="px-8 py-24 text-center"
 		style="background: linear-gradient(135deg, var(--forge-ember) 0%, var(--forge-glow) 100%);"
 	>
 		<Container size="narrow">
-			<h2 class="font-clash text-4xl md:text-5xl font-bold text-forge-black mb-6">
+			<h2 class="font-clash text-forge-black mb-6 text-4xl font-bold md:text-5xl">
 				Your Project Could Be Next.
 			</h2>
-			<p class="text-lg text-forge-black/80 mb-10">
+			<p class="text-forge-black/80 mb-10 text-lg">
 				Let's talk about building something you'll be proud to show off.
 			</p>
 			<Button variant="secondary" size="lg" href="/contact">

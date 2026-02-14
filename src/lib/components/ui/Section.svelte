@@ -49,7 +49,7 @@
 
 <section class={classes} {...restProps}>
 	{#if grid}
-		<div class="absolute inset-0 grid-pattern pointer-events-none"></div>
+		<div class="grid-pattern pointer-events-none absolute inset-0"></div>
 	{/if}
 	{@render children()}
 </section>
