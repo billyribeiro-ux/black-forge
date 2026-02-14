@@ -20,23 +20,27 @@ if (typeof window !== 'undefined') {
  * Hook for GSAP animations with automatic cleanup.
  *
  * This hook provides a way to create GSAP animations that are automatically
- * cleaned up when the component unmounts. It also provides an option to
- * watch dependencies and re-run the animation when they change.
+ * cleaned up when the component unmounts.
  *
  * @param {function} animationFn - The function that returns the GSAP animation.
- * @param {function} [dependencies] - The function that returns the dependencies to watch.
  * @returns {void}
- * Hook for GSAP animations with automatic cleanup
+ *
  * Usage in Svelte 5 components:
  *
  * let ref = $state<HTMLElement>();
  * useGsap(() => {
- *   gsap.from(ref, { opacity: 0, y: 20 });
- * }, () => [ref]);
+ *   if (ref) gsap.from(ref, { opacity: 0, y: 20 });
+ * });
+ *
+ * For reactive animations, wrap useGsap in $effect:
+ * $effect(() => {
+ *   if (ref) {
+ *     useGsap(() => gsap.from(ref, { opacity: 0, y: 20 }));
+ *   }
+ * });
  */
 export function useGsap(
-	animationFn: () => gsap.core.Tween | gsap.core.Timeline | void,
-	dependencies?: () => unknown[]
+	animationFn: () => gsap.core.Tween | gsap.core.Timeline | void
 ) {
 	let ctx: gsap.Context | null = null;
 
@@ -49,17 +53,6 @@ export function useGsap(
 			ctx?.revert();
 		};
 	});
-
-	// Watch dependencies if provided
-	if (dependencies) {
-		$effect(() => {
-			dependencies();
-			ctx?.revert();
-			ctx = gsap.context(() => {
-				animationFn();
-			});
-		});
-	}
 }
 
 /**
