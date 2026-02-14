@@ -1,0 +1,368 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+
+/* ============================================
+   BLACKFORGE DIGITAL — Design System
+   ============================================ */
+
+@layer base {
+	/* CSS Custom Properties — Forge Color Palette */
+	:root {
+		/* Base Colors */
+		--forge-black: #0a0a0a;
+		--forge-charcoal: #1a1a1a;
+		--forge-steel: #2d2d2d;
+		--forge-ash: #8a8a8a;
+		--forge-smoke: #c4c4c4;
+		--forge-white: #f5f5f0;
+
+		/* Accent Colors */
+		--forge-ember: #ff4d00;
+		--forge-glow: #ff6b2b;
+		--forge-heat: #ff8c42;
+		--forge-blue: #0066ff;
+
+		/* Semantic Colors */
+		--color-bg-primary: var(--forge-black);
+		--color-bg-secondary: var(--forge-charcoal);
+		--color-bg-tertiary: var(--forge-steel);
+		--color-text-primary: var(--forge-white);
+		--color-text-secondary: var(--forge-smoke);
+		--color-text-tertiary: var(--forge-ash);
+		--color-accent: var(--forge-ember);
+		--color-accent-hover: var(--forge-glow);
+
+		/* Spacing Scale */
+		--spacing-xs: 0.25rem;
+		--spacing-sm: 0.5rem;
+		--spacing-md: 1rem;
+		--spacing-lg: 1.5rem;
+		--spacing-xl: 2rem;
+		--spacing-2xl: 3rem;
+		--spacing-3xl: 4rem;
+
+		/* Typography Scale */
+		--text-xs: 0.75rem;
+		--text-sm: 0.875rem;
+		--text-base: 1rem;
+		--text-lg: 1.125rem;
+		--text-xl: 1.25rem;
+		--text-2xl: 1.5rem;
+		--text-3xl: 1.875rem;
+		--text-4xl: 2.25rem;
+		--text-5xl: 3rem;
+
+		/* Container Max Width */
+		--container-max: 1400px;
+		--container-narrow: 900px;
+		--container-reading: 720px;
+
+		/* Transitions */
+		--transition-fast: 150ms ease;
+		--transition-base: 300ms ease;
+		--transition-slow: 600ms ease;
+
+		/* Shadows */
+		--shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+		--shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+		--shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+		--shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+		--shadow-ember: 0 4px 20px rgba(255, 77, 0, 0.3);
+		--shadow-ember-lg: 0 8px 30px rgba(0, 0, 0, 0.3);
+
+		/* Border Radius */
+		--radius-sm: 0.125rem;
+		--radius-md: 0.25rem;
+		--radius-lg: 0.5rem;
+		--radius-none: 0;
+
+		/* Z-Index Scale */
+		--z-base: 1;
+		--z-dropdown: 1000;
+		--z-sticky: 1020;
+		--z-fixed: 1030;
+		--z-modal-backdrop: 1040;
+		--z-modal: 1050;
+		--z-popover: 1060;
+		--z-tooltip: 1070;
+	}
+
+	/* Base Styles */
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	html {
+		font-size: 16px;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		text-rendering: optimizeLegibility;
+		scroll-behavior: smooth;
+	}
+
+	body {
+		background-color: var(--forge-black);
+		color: var(--forge-white);
+		font-family: 'General Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+			'Helvetica Neue', Arial, sans-serif;
+		font-size: 1rem;
+		line-height: 1.6;
+		overflow-x: hidden;
+	}
+
+	/* Typography Base */
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-weight: 600;
+		line-height: 1.2;
+		color: var(--forge-white);
+		margin: 0;
+	}
+
+	h1 {
+		font-family: 'Clash Display', sans-serif;
+		font-size: clamp(2rem, 5vw, 4.5rem);
+		font-weight: 700;
+		line-height: 1.05;
+	}
+
+	h2 {
+		font-family: 'Clash Display', sans-serif;
+		font-size: clamp(1.75rem, 4vw, 3rem);
+		font-weight: 600;
+	}
+
+	h3 {
+		font-family: 'Satoshi', sans-serif;
+		font-size: clamp(1.5rem, 3vw, 2rem);
+		font-weight: 600;
+	}
+
+	h4 {
+		font-family: 'Satoshi', sans-serif;
+		font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+		font-weight: 600;
+	}
+
+	p {
+		margin: 0;
+		line-height: 1.7;
+	}
+
+	a {
+		color: var(--forge-ember);
+		text-decoration: none;
+		transition: color var(--transition-base);
+	}
+
+	a:hover {
+		color: var(--forge-glow);
+	}
+
+	/* Selection */
+	::selection {
+		background-color: var(--forge-ember);
+		color: var(--forge-white);
+	}
+
+	::-moz-selection {
+		background-color: var(--forge-ember);
+		color: var(--forge-white);
+	}
+
+	/* Scrollbar */
+	::-webkit-scrollbar {
+		width: 10px;
+		height: 10px;
+	}
+
+	::-webkit-scrollbar-track {
+		background: var(--forge-black);
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: var(--forge-steel);
+		border-radius: 5px;
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+		background: var(--forge-ash);
+	}
+
+	/* Focus Styles */
+	:focus-visible {
+		outline: 2px solid var(--forge-ember);
+		outline-offset: 2px;
+	}
+
+	button:focus-visible,
+	a:focus-visible {
+		outline: 2px solid var(--forge-ember);
+		outline-offset: 2px;
+	}
+
+	/* Image Optimization */
+	img {
+		max-width: 100%;
+		height: auto;
+		display: block;
+	}
+}
+
+/* ============================================
+   Utility Classes
+   ============================================ */
+
+@layer utilities {
+	/* Container */
+	.container-forge {
+		width: 100%;
+		max-width: var(--container-max);
+		margin-left: auto;
+		margin-right: auto;
+		padding-left: 3rem;
+		padding-right: 3rem;
+	}
+
+	@media (max-width: 768px) {
+		.container-forge {
+			padding-left: 1.25rem;
+			padding-right: 1.25rem;
+		}
+	}
+
+	.container-narrow {
+		max-width: var(--container-narrow);
+	}
+
+	.container-reading {
+		max-width: var(--container-reading);
+	}
+
+	/* Text Styles */
+	.text-ember {
+		color: var(--forge-ember);
+	}
+
+	.text-glow {
+		color: var(--forge-glow);
+	}
+
+	.text-smoke {
+		color: var(--forge-smoke);
+	}
+
+	.text-ash {
+		color: var(--forge-ash);
+	}
+
+	/* Background Utilities */
+	.bg-forge-black {
+		background-color: var(--forge-black);
+	}
+
+	.bg-forge-charcoal {
+		background-color: var(--forge-charcoal);
+	}
+
+	.bg-forge-steel {
+		background-color: var(--forge-steel);
+	}
+
+	/* Ember Glow Effect */
+	.ember-glow {
+		text-shadow: 0 0 40px rgba(255, 77, 0, 0.3);
+	}
+
+	.ember-glow-box {
+		box-shadow: var(--shadow-ember);
+	}
+
+	/* Grain Texture Overlay */
+	.grain-texture {
+		position: relative;
+	}
+
+	.grain-texture::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+		pointer-events: none;
+		opacity: 0.04;
+	}
+
+	/* Grid Pattern */
+	.grid-pattern {
+		background-image: linear-gradient(var(--forge-steel) 1px, transparent 1px),
+			linear-gradient(90deg, var(--forge-steel) 1px, transparent 1px);
+		background-size: 60px 60px;
+		opacity: 0.05;
+	}
+
+	/* Transitions */
+	.transition-forge {
+		transition: all var(--transition-base);
+	}
+
+	.transition-fast {
+		transition: all var(--transition-fast);
+	}
+
+	.transition-slow {
+		transition: all var(--transition-slow);
+	}
+
+	/* Animations */
+	@keyframes pulse-ember {
+		0%,
+		100% {
+			opacity: 0.5;
+		}
+		50% {
+			opacity: 1;
+		}
+	}
+
+	.pulse-ember {
+		animation: pulse-ember 2s ease-in-out infinite;
+	}
+
+	@keyframes float {
+		0%,
+		100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(-5px);
+		}
+	}
+
+	.float-animation {
+		animation: float 4s ease-in-out infinite;
+	}
+
+	/* Hover Effects */
+	.hover-lift {
+		transition: transform var(--transition-base);
+	}
+
+	.hover-lift:hover {
+		transform: translateY(-4px);
+	}
+
+	.hover-ember-border {
+		transition: border-color var(--transition-base);
+	}
+
+	.hover-ember-border:hover {
+		border-color: var(--forge-ember);
+	}
+}
