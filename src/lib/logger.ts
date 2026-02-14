@@ -1,9 +1,9 @@
 /**
  * Structured logging system for Blackforge Digital.
- * 
+ *
  * Provides severity-based logging with structured data output.
  * In production, logs are JSON-formatted for ingestion by log aggregation systems.
- * 
+ *
  * @module logger
  */
 
@@ -20,11 +20,13 @@ interface LogEntry {
 	message: string;
 	timestamp: string;
 	context?: Record<string, unknown> | undefined;
-	error?: {
-		name: string;
-		message: string;
-		stack?: string | undefined;
-	} | undefined;
+	error?:
+		| {
+				name: string;
+				message: string;
+				stack?: string | undefined;
+		  }
+		| undefined;
 }
 
 /**
@@ -52,9 +54,9 @@ class Logger {
 
 	/**
 	 * Logs a debug message.
-	 * 
+	 *
 	 * Use for detailed diagnostic information useful during development.
-	 * 
+	 *
 	 * @param message - The log message
 	 * @param context - Additional context data
 	 */
@@ -64,9 +66,9 @@ class Logger {
 
 	/**
 	 * Logs an info message.
-	 * 
+	 *
 	 * Use for general informational messages about application state.
-	 * 
+	 *
 	 * @param message - The log message
 	 * @param context - Additional context data
 	 */
@@ -76,9 +78,9 @@ class Logger {
 
 	/**
 	 * Logs a warning message.
-	 * 
+	 *
 	 * Use for potentially harmful situations that don't prevent operation.
-	 * 
+	 *
 	 * @param message - The log message
 	 * @param context - Additional context data
 	 */
@@ -88,9 +90,9 @@ class Logger {
 
 	/**
 	 * Logs an error message.
-	 * 
+	 *
 	 * Use for error events that might still allow the application to continue.
-	 * 
+	 *
 	 * @param message - The log message
 	 * @param error - The error object
 	 * @param context - Additional context data
@@ -116,9 +118,9 @@ class Logger {
 
 	/**
 	 * Logs a fatal error message.
-	 * 
+	 *
 	 * Use for severe errors that will cause the application to terminate.
-	 * 
+	 *
 	 * @param message - The log message
 	 * @param error - The error object
 	 * @param context - Additional context data
@@ -184,7 +186,7 @@ class Logger {
 
 /**
  * Global logger instance.
- * 
+ *
  * Configured based on NODE_ENV environment variable.
  */
 export const logger = new Logger({

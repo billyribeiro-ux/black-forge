@@ -95,7 +95,7 @@
 			</div>
 
 			<!-- Navigation Dots -->
-			<div class="flex justify-center gap-3 mt-12">
+			<div class="mt-12 flex justify-center gap-3">
 				{#each testimonials as _testimonial, i}
 					<button
 						onclick={() => goToSlide(i)}

@@ -1,15 +1,15 @@
 /**
  * Typed error hierarchy for Blackforge Digital application.
- * 
+ *
  * All application errors extend AppError to provide structured logging,
  * HTTP status codes, and consistent error handling across the codebase.
- * 
+ *
  * @module errors
  */
 
 /**
  * Base error class for all application errors.
- * 
+ *
  * Provides structured error information including error codes, HTTP status codes,
  * timestamps, and contextual data for debugging and logging.
  */
@@ -29,7 +29,7 @@ export abstract class AppError extends Error {
 
 	/**
 	 * Serializes the error for structured logging.
-	 * 
+	 *
 	 * @returns JSON-serializable error object
 	 */
 	toJSON(): Record<string, unknown> {
@@ -47,7 +47,7 @@ export abstract class AppError extends Error {
 
 /**
  * Validation error for invalid user input or data.
- * 
+ *
  * @example
  * ```ts
  * throw new ValidationError('Email is required', { field: 'email' });
@@ -60,7 +60,7 @@ export class ValidationError extends AppError {
 
 /**
  * Resource not found error.
- * 
+ *
  * @example
  * ```ts
  * throw new NotFoundError('Post not found', { slug: 'my-post' });
@@ -73,7 +73,7 @@ export class NotFoundError extends AppError {
 
 /**
  * Authorization error for insufficient permissions.
- * 
+ *
  * @example
  * ```ts
  * throw new AuthorizationError('Admin access required');
@@ -86,7 +86,7 @@ export class AuthorizationError extends AppError {
 
 /**
  * Authentication error for invalid credentials or missing session.
- * 
+ *
  * @example
  * ```ts
  * throw new AuthenticationError('Invalid session token');
@@ -99,7 +99,7 @@ export class AuthenticationError extends AppError {
 
 /**
  * Internal server error for unexpected failures.
- * 
+ *
  * @example
  * ```ts
  * throw new InternalError('Database connection failed', { error: err });
@@ -112,7 +112,7 @@ export class InternalError extends AppError {
 
 /**
  * Rate limit exceeded error.
- * 
+ *
  * @example
  * ```ts
  * throw new RateLimitError('Too many requests', { retryAfter: 60 });
@@ -125,7 +125,7 @@ export class RateLimitError extends AppError {
 
 /**
  * Data integrity error for corrupted or inconsistent data.
- * 
+ *
  * @example
  * ```ts
  * throw new DataIntegrityError('Unexpected null value', { index: 5 });
@@ -138,7 +138,7 @@ export class DataIntegrityError extends AppError {
 
 /**
  * Insufficient data error for operations requiring minimum data points.
- * 
+ *
  * @example
  * ```ts
  * throw new InsufficientDataError('Need at least 10 data points', { received: 5 });

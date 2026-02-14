@@ -38,7 +38,7 @@
 <!-- HERO SECTION -->
 <Section background="black" padding="none" grain={true} grid={true}>
 	<div
-		class="relative min-h-screen flex items-center justify-center"
+		class="relative flex min-h-screen items-center justify-center"
 		style="background: radial-gradient(ellipse at 80% 90%, rgba(255, 77, 0, 0.08) 0%, transparent 60%);"
 	>
 		<Container>

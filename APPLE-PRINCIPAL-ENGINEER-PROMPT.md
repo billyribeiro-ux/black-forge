@@ -26,21 +26,21 @@ Every project ships with this `tsconfig.json` baseline. These are not suggestion
 
 ```jsonc
 {
-  "compilerOptions": {
-    "strict": true,                           // Enables ALL strict checks below
-    "noUncheckedIndexedAccess": true,          // array[0] is T | undefined, not T
-    "noImplicitReturns": true,                 // Every code path must return
-    "noFallthroughCasesInSwitch": true,        // switch cases must break or return
-    "noPropertyAccessFromIndexSignature": true,// Forces bracket notation for dynamic keys
-    "exactOptionalProperties": true,           // undefined !== optional
-    "noImplicitOverride": true,                // override keyword is mandatory
-    "forceConsistentCasingInFileNames": true,   // Prevents case-sensitivity bugs
-    "verbatimModuleSyntax": true,              // Explicit type imports
-    "isolatedModules": true,                   // Required for SvelteKit/Vite
-    "moduleResolution": "bundler",             // Modern resolution for Vite
-    "target": "ES2022",                        // Modern baseline
-    "module": "ES2022"
-  }
+	"compilerOptions": {
+		"strict": true, // Enables ALL strict checks below
+		"noUncheckedIndexedAccess": true, // array[0] is T | undefined, not T
+		"noImplicitReturns": true, // Every code path must return
+		"noFallthroughCasesInSwitch": true, // switch cases must break or return
+		"noPropertyAccessFromIndexSignature": true, // Forces bracket notation for dynamic keys
+		"exactOptionalProperties": true, // undefined !== optional
+		"noImplicitOverride": true, // override keyword is mandatory
+		"forceConsistentCasingInFileNames": true, // Prevents case-sensitivity bugs
+		"verbatimModuleSyntax": true, // Explicit type imports
+		"isolatedModules": true, // Required for SvelteKit/Vite
+		"moduleResolution": "bundler", // Modern resolution for Vite
+		"target": "ES2022", // Modern baseline
+		"module": "ES2022"
+	}
 }
 ```
 
@@ -61,38 +61,35 @@ Every project ships with this `tsconfig.json` baseline. These are not suggestion
 ```typescript
 // ✅ CORRECT — explicit return type, readonly params, JSDoc
 /** Calculates the exponential moving average for the given period. */
-function calculateEMA(
-  prices: readonly number[],
-  period: number,
-): number {
-  if (prices.length < period) {
-    throw new InsufficientDataError(
-      `EMA requires at least ${period} data points, received ${prices.length}`,
-    );
-  }
+function calculateEMA(prices: readonly number[], period: number): number {
+	if (prices.length < period) {
+		throw new InsufficientDataError(
+			`EMA requires at least ${period} data points, received ${prices.length}`
+		);
+	}
 
-  const multiplier = 2 / (period + 1);
-  let ema = prices.slice(0, period).reduce((sum, p) => sum + p, 0) / period;
+	const multiplier = 2 / (period + 1);
+	let ema = prices.slice(0, period).reduce((sum, p) => sum + p, 0) / period;
 
-  for (let i = period; i < prices.length; i++) {
-    const price = prices[i];
-    if (price === undefined) {
-      throw new DataIntegrityError(`Unexpected undefined at index ${i}`);
-    }
-    ema = (price - ema) * multiplier + ema;
-  }
+	for (let i = period; i < prices.length; i++) {
+		const price = prices[i];
+		if (price === undefined) {
+			throw new DataIntegrityError(`Unexpected undefined at index ${i}`);
+		}
+		ema = (price - ema) * multiplier + ema;
+	}
 
-  return ema;
+	return ema;
 }
 
 // ❌ WRONG — no return type, mutable params, no validation, magic numbers
 function calcEMA(prices: number[], p: number) {
-  const m = 2 / (p + 1);
-  let ema = prices.slice(0, p).reduce((s, x) => s + x, 0) / p;
-  for (let i = p; i < prices.length; i++) {
-    ema = (prices[i] - ema) * m + ema;
-  }
-  return ema;
+	const m = 2 / (p + 1);
+	let ema = prices.slice(0, p).reduce((s, x) => s + x, 0) / p;
+	for (let i = p; i < prices.length; i++) {
+		ema = (prices[i] - ema) * m + ema;
+	}
+	return ema;
 }
 ```
 
@@ -103,52 +100,49 @@ Never use generic `Error`. Define a typed error hierarchy:
 ```typescript
 /** Base error for all application errors. */
 abstract class AppError extends Error {
-  abstract readonly code: string;
-  abstract readonly statusCode: number;
-  readonly timestamp: string;
-  readonly context: Record<string, unknown>;
+	abstract readonly code: string;
+	abstract readonly statusCode: number;
+	readonly timestamp: string;
+	readonly context: Record<string, unknown>;
 
-  constructor(
-    message: string,
-    context: Record<string, unknown> = {},
-  ) {
-    super(message);
-    this.name = this.constructor.name;
-    this.timestamp = new Date().toISOString();
-    this.context = context;
-  }
+	constructor(message: string, context: Record<string, unknown> = {}) {
+		super(message);
+		this.name = this.constructor.name;
+		this.timestamp = new Date().toISOString();
+		this.context = context;
+	}
 
-  /** Serializes the error for structured logging. */
-  toJSON(): Record<string, unknown> {
-    return {
-      name: this.name,
-      code: this.code,
-      message: this.message,
-      statusCode: this.statusCode,
-      timestamp: this.timestamp,
-      context: this.context,
-    };
-  }
+	/** Serializes the error for structured logging. */
+	toJSON(): Record<string, unknown> {
+		return {
+			name: this.name,
+			code: this.code,
+			message: this.message,
+			statusCode: this.statusCode,
+			timestamp: this.timestamp,
+			context: this.context
+		};
+	}
 }
 
 class ValidationError extends AppError {
-  readonly code = 'VALIDATION_ERROR' as const;
-  readonly statusCode = 400 as const;
+	readonly code = 'VALIDATION_ERROR' as const;
+	readonly statusCode = 400 as const;
 }
 
 class NotFoundError extends AppError {
-  readonly code = 'NOT_FOUND' as const;
-  readonly statusCode = 404 as const;
+	readonly code = 'NOT_FOUND' as const;
+	readonly statusCode = 404 as const;
 }
 
 class AuthorizationError extends AppError {
-  readonly code = 'UNAUTHORIZED' as const;
-  readonly statusCode = 403 as const;
+	readonly code = 'UNAUTHORIZED' as const;
+	readonly statusCode = 403 as const;
 }
 
 class InternalError extends AppError {
-  readonly code = 'INTERNAL_ERROR' as const;
-  readonly statusCode = 500 as const;
+	readonly code = 'INTERNAL_ERROR' as const;
+	readonly statusCode = 500 as const;
 }
 ```
 
@@ -157,28 +151,29 @@ class InternalError extends AppError {
 For operations where failure is a normal outcome (parsing, validation, network calls), use a discriminated union instead of try/catch:
 
 ```typescript
-type Result<T, E = AppError> =
-  | { ok: true; value: T }
-  | { ok: false; error: E };
+type Result<T, E = AppError> = { ok: true; value: T } | { ok: false; error: E };
 
 function ok<T>(value: T): Result<T, never> {
-  return { ok: true, value };
+	return { ok: true, value };
 }
 
 function err<E>(error: E): Result<never, E> {
-  return { ok: false, error };
+	return { ok: false, error };
 }
 
 // Usage — caller MUST handle the error case
 function parseSlug(input: string): Result<string, ValidationError> {
-  const slug = input.toLowerCase().replace(/[^a-z0-9-]/g, '-').replace(/-+/g, '-');
-  if (slug.length === 0) {
-    return err(new ValidationError('Slug cannot be empty after sanitization'));
-  }
-  if (slug.length > 200) {
-    return err(new ValidationError(`Slug exceeds 200 char limit: ${slug.length}`));
-  }
-  return ok(slug);
+	const slug = input
+		.toLowerCase()
+		.replace(/[^a-z0-9-]/g, '-')
+		.replace(/-+/g, '-');
+	if (slug.length === 0) {
+		return err(new ValidationError('Slug cannot be empty after sanitization'));
+	}
+	if (slug.length > 200) {
+		return err(new ValidationError(`Slug exceeds 200 char limit: ${slug.length}`));
+	}
+	return ok(slug);
 }
 ```
 
@@ -190,118 +185,116 @@ function parseSlug(input: string): Result<string, ValidationError> {
 
 Svelte 5 runes are not optional. Legacy patterns are banned across the entire codebase:
 
-| ✅ Svelte 5 (Mandatory)              | ❌ Legacy (Banned)                     |
-| ------------------------------------- | -------------------------------------- |
-| `let count = $state(0)`              | `let count = 0` (implicit reactive)    |
-| `let doubled = $derived(count * 2)`  | `$: doubled = count * 2`              |
-| `$effect(() => { ... })`             | `$: { ... }` (reactive statements)     |
-| `let { title, children } = $props()` | `export let title`                     |
-| `{@render children()}`               | `<slot />`                             |
-| `onclick={() => ...}`                | `on:click={() => ...}`                 |
-| `{#snippet name()}...{/snippet}`     | Named slots                            |
+| ✅ Svelte 5 (Mandatory)              | ❌ Legacy (Banned)                  |
+| ------------------------------------ | ----------------------------------- |
+| `let count = $state(0)`              | `let count = 0` (implicit reactive) |
+| `let doubled = $derived(count * 2)`  | `$: doubled = count * 2`            |
+| `$effect(() => { ... })`             | `$: { ... }` (reactive statements)  |
+| `let { title, children } = $props()` | `export let title`                  |
+| `{@render children()}`               | `<slot />`                          |
+| `onclick={() => ...}`                | `on:click={() => ...}`              |
+| `{#snippet name()}...{/snippet}`     | Named slots                         |
 
 ### 8. Component Architecture
 
 ```svelte
 <script lang="ts">
-  // ─── Imports ─────────────────────────────────────────────
-  import { onMount } from 'svelte';
-  import { gsap } from '$lib/gsap';
-  import type { BlogPost } from '$lib/types';
+	// ─── Imports ─────────────────────────────────────────────
+	import { onMount } from 'svelte';
+	import { gsap } from '$lib/gsap';
+	import type { BlogPost } from '$lib/types';
 
-  // ─── Props ───────────────────────────────────────────────
-  // Always destructure with explicit types. Always provide defaults for optional props.
-  let {
-    post,
-    variant = 'default',
-    onSelect,
-    children,
-  }: {
-    post: BlogPost;
-    variant?: 'default' | 'compact' | 'featured';
-    onSelect?: (post: BlogPost) => void;
-    children?: import('svelte').Snippet;
-  } = $props();
+	// ─── Props ───────────────────────────────────────────────
+	// Always destructure with explicit types. Always provide defaults for optional props.
+	let {
+		post,
+		variant = 'default',
+		onSelect,
+		children
+	}: {
+		post: BlogPost;
+		variant?: 'default' | 'compact' | 'featured';
+		onSelect?: (post: BlogPost) => void;
+		children?: import('svelte').Snippet;
+	} = $props();
 
-  // ─── State ───────────────────────────────────────────────
-  let isExpanded = $state(false);
-  let containerEl = $state<HTMLElement | null>(null);
+	// ─── State ───────────────────────────────────────────────
+	let isExpanded = $state(false);
+	let containerEl = $state<HTMLElement | null>(null);
 
-  // ─── Derived ─────────────────────────────────────────────
-  let readTimeLabel = $derived(
-    post.read_time_minutes === 1
-      ? '1 min read'
-      : `${post.read_time_minutes} min read`,
-  );
+	// ─── Derived ─────────────────────────────────────────────
+	let readTimeLabel = $derived(
+		post.read_time_minutes === 1 ? '1 min read' : `${post.read_time_minutes} min read`
+	);
 
-  let cardClasses = $derived.by(() => {
-    const base = 'post-card';
-    const variantClass = `post-card--${variant}`;
-    const expandedClass = isExpanded ? 'post-card--expanded' : '';
-    return `${base} ${variantClass} ${expandedClass}`.trim();
-  });
+	let cardClasses = $derived.by(() => {
+		const base = 'post-card';
+		const variantClass = `post-card--${variant}`;
+		const expandedClass = isExpanded ? 'post-card--expanded' : '';
+		return `${base} ${variantClass} ${expandedClass}`.trim();
+	});
 
-  // ─── Effects ─────────────────────────────────────────────
-  // Effects MUST have cleanup. Effects MUST NOT set state that triggers re-renders
-  // unless the dependency chain is explicitly understood and bounded.
-  $effect(() => {
-    if (!containerEl) return;
+	// ─── Effects ─────────────────────────────────────────────
+	// Effects MUST have cleanup. Effects MUST NOT set state that triggers re-renders
+	// unless the dependency chain is explicitly understood and bounded.
+	$effect(() => {
+		if (!containerEl) return;
 
-    const ctx = gsap.context(() => {
-      gsap.from(containerEl!, {
-        opacity: 0,
-        y: 24,
-        duration: 0.5,
-        ease: 'power2.out',
-      });
-    });
+		const ctx = gsap.context(() => {
+			gsap.from(containerEl!, {
+				opacity: 0,
+				y: 24,
+				duration: 0.5,
+				ease: 'power2.out'
+			});
+		});
 
-    return () => {
-      ctx.revert();
-    };
-  });
+		return () => {
+			ctx.revert();
+		};
+	});
 
-  // ─── Handlers ────────────────────────────────────────────
-  function handleClick(): void {
-    onSelect?.(post);
-  }
+	// ─── Handlers ────────────────────────────────────────────
+	function handleClick(): void {
+		onSelect?.(post);
+	}
 
-  function handleKeyDown(event: KeyboardEvent): void {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      handleClick();
-    }
-  }
+	function handleKeyDown(event: KeyboardEvent): void {
+		if (event.key === 'Enter' || event.key === ' ') {
+			event.preventDefault();
+			handleClick();
+		}
+	}
 
-  // ─── Lifecycle ───────────────────────────────────────────
-  onMount(() => {
-    // Lifecycle logic here
-    return () => {
-      // Cleanup here — this is NOT optional
-    };
-  });
+	// ─── Lifecycle ───────────────────────────────────────────
+	onMount(() => {
+		// Lifecycle logic here
+		return () => {
+			// Cleanup here — this is NOT optional
+		};
+	});
 </script>
 
 <!-- ─── Template ──────────────────────────────────────────── -->
 <article
-  bind:this={containerEl}
-  class={cardClasses}
-  role="button"
-  tabindex="0"
-  onclick={handleClick}
-  onkeydown={handleKeyDown}
+	bind:this={containerEl}
+	class={cardClasses}
+	role="button"
+	tabindex="0"
+	onclick={handleClick}
+	onkeydown={handleKeyDown}
 >
-  <h3 class="post-card__title">{post.title}</h3>
-  <span class="post-card__meta">{readTimeLabel}</span>
+	<h3 class="post-card__title">{post.title}</h3>
+	<span class="post-card__meta">{readTimeLabel}</span>
 
-  {#if children}
-    {@render children()}
-  {/if}
+	{#if children}
+		{@render children()}
+	{/if}
 </article>
 
 <!-- ─── Styles ────────────────────────────────────────────── -->
 <style>
-  /* Component styles are ALWAYS scoped. Global styles go in app.css. */
+	/* Component styles are ALWAYS scoped. Global styles go in app.css. */
 </style>
 ```
 
@@ -387,20 +380,20 @@ import { error } from '@sveltejs/kit';
 import { fetchPostBySlug } from '$lib/server/posts';
 
 export const load: PageServerLoad = async ({ params, setHeaders }) => {
-  const post = await fetchPostBySlug(params.slug);
+	const post = await fetchPostBySlug(params.slug);
 
-  if (!post) {
-    error(404, {
-      message: `Post not found: ${params.slug}`,
-    });
-  }
+	if (!post) {
+		error(404, {
+			message: `Post not found: ${params.slug}`
+		});
+	}
 
-  // Cache for 5 minutes, stale-while-revalidate for 1 hour
-  setHeaders({
-    'Cache-Control': 'public, max-age=300, s-maxage=300, stale-while-revalidate=3600',
-  });
+	// Cache for 5 minutes, stale-while-revalidate for 1 hour
+	setHeaders({
+		'Cache-Control': 'public, max-age=300, s-maxage=300, stale-while-revalidate=3600'
+	});
 
-  return { post };
+	return { post };
 };
 ```
 
@@ -415,43 +408,43 @@ import { zod } from 'sveltekit-superforms/adapters';
 import { postSchema } from '$lib/schemas/post';
 
 export const actions: Actions = {
-  save: async ({ request, params, locals }) => {
-    if (!locals.user?.isAdmin) {
-      return fail(403, { error: 'Unauthorized' });
-    }
+	save: async ({ request, params, locals }) => {
+		if (!locals.user?.isAdmin) {
+			return fail(403, { error: 'Unauthorized' });
+		}
 
-    const form = await superValidate(request, zod(postSchema));
+		const form = await superValidate(request, zod(postSchema));
 
-    if (!form.valid) {
-      return fail(400, { form });
-    }
+		if (!form.valid) {
+			return fail(400, { form });
+		}
 
-    const result = await updatePost(params.id, form.data);
+		const result = await updatePost(params.id, form.data);
 
-    if (!result.ok) {
-      return fail(500, { error: result.error.message });
-    }
+		if (!result.ok) {
+			return fail(500, { error: result.error.message });
+		}
 
-    return message(form, 'Post saved successfully');
-  },
+		return message(form, 'Post saved successfully');
+	},
 
-  publish: async ({ params, locals }) => {
-    if (!locals.user?.isAdmin) {
-      return fail(403, { error: 'Unauthorized' });
-    }
+	publish: async ({ params, locals }) => {
+		if (!locals.user?.isAdmin) {
+			return fail(403, { error: 'Unauthorized' });
+		}
 
-    await publishPost(params.id);
-    redirect(303, `/blog/${params.id}`);
-  },
+		await publishPost(params.id);
+		redirect(303, `/blog/${params.id}`);
+	},
 
-  delete: async ({ params, locals }) => {
-    if (!locals.user?.isAdmin) {
-      return fail(403, { error: 'Unauthorized' });
-    }
+	delete: async ({ params, locals }) => {
+		if (!locals.user?.isAdmin) {
+			return fail(403, { error: 'Unauthorized' });
+		}
 
-    await deletePost(params.id);
-    redirect(303, '/admin/blog');
-  },
+		await deletePost(params.id);
+		redirect(303, '/admin/blog');
+	}
 };
 ```
 
@@ -468,48 +461,50 @@ import { z } from 'zod';
 
 // ─── Primitives ────────────────────────────────────────────
 const slug = z
-  .string()
-  .min(1, 'Slug is required')
-  .max(200, 'Slug must be under 200 characters')
-  .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'Invalid slug format');
+	.string()
+	.min(1, 'Slug is required')
+	.max(200, 'Slug must be under 200 characters')
+	.regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'Invalid slug format');
 
 const email = z
-  .string()
-  .email('Invalid email address')
-  .max(254, 'Email exceeds maximum length')
-  .transform((v) => v.toLowerCase().trim());
+	.string()
+	.email('Invalid email address')
+	.max(254, 'Email exceeds maximum length')
+	.transform((v) => v.toLowerCase().trim());
 
 const url = z
-  .string()
-  .url('Invalid URL')
-  .refine((v) => v.startsWith('https://'), 'URL must use HTTPS');
+	.string()
+	.url('Invalid URL')
+	.refine((v) => v.startsWith('https://'), 'URL must use HTTPS');
 
 // ─── Post Schema ───────────────────────────────────────────
 export const postSchema = z.object({
-  title: z
-    .string()
-    .min(1, 'Title is required')
-    .max(200, 'Title must be under 200 characters')
-    .trim(),
-  slug: slug,
-  excerpt: z
-    .string()
-    .max(300, 'Excerpt must be under 300 characters')
-    .trim()
-    .default(''),
-  content: z.record(z.unknown()), // JSONContent from Tiptap
-  category_id: z.string().uuid('Invalid category ID'),
-  tags: z.array(z.string().trim()).max(10, 'Maximum 10 tags').default([]),
-  featured_image: url.optional().or(z.literal('')),
-  featured_image_alt: z.string().max(200).trim().default(''),
-  status: z.enum(['draft', 'published', 'scheduled', 'archived']).default('draft'),
-  published_at: z.coerce.date().optional(),
-  seo: z.object({
-    meta_title: z.string().max(60, 'Meta title should be under 60 characters').trim().default(''),
-    meta_description: z.string().max(160, 'Meta description should be under 160 characters').trim().default(''),
-    focus_keyword: z.string().max(50).trim().default(''),
-    no_index: z.boolean().default(false),
-  }).default({}),
+	title: z
+		.string()
+		.min(1, 'Title is required')
+		.max(200, 'Title must be under 200 characters')
+		.trim(),
+	slug: slug,
+	excerpt: z.string().max(300, 'Excerpt must be under 300 characters').trim().default(''),
+	content: z.record(z.unknown()), // JSONContent from Tiptap
+	category_id: z.string().uuid('Invalid category ID'),
+	tags: z.array(z.string().trim()).max(10, 'Maximum 10 tags').default([]),
+	featured_image: url.optional().or(z.literal('')),
+	featured_image_alt: z.string().max(200).trim().default(''),
+	status: z.enum(['draft', 'published', 'scheduled', 'archived']).default('draft'),
+	published_at: z.coerce.date().optional(),
+	seo: z
+		.object({
+			meta_title: z.string().max(60, 'Meta title should be under 60 characters').trim().default(''),
+			meta_description: z
+				.string()
+				.max(160, 'Meta description should be under 160 characters')
+				.trim()
+				.default(''),
+			focus_keyword: z.string().max(50).trim().default(''),
+			no_index: z.boolean().default(false)
+		})
+		.default({})
 });
 
 export type PostInput = z.infer<typeof postSchema>;
@@ -517,11 +512,11 @@ export type PostInput = z.infer<typeof postSchema>;
 // ─── API Response Validation ───────────────────────────────
 // ALWAYS validate external data. Never trust API responses.
 const apiPostSchema = postSchema.extend({
-  id: z.string().uuid(),
-  created_at: z.coerce.date(),
-  updated_at: z.coerce.date(),
-  word_count: z.number().int().nonneg(),
-  read_time_minutes: z.number().int().nonneg(),
+	id: z.string().uuid(),
+	created_at: z.coerce.date(),
+	updated_at: z.coerce.date(),
+	word_count: z.number().int().nonneg(),
+	read_time_minutes: z.number().int().nonneg()
 });
 
 export type PostResponse = z.infer<typeof apiPostSchema>;
@@ -535,34 +530,34 @@ export type PostResponse = z.infer<typeof apiPostSchema>;
 
 ```css
 /* src/app.css */
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* ─── Design Tokens (CSS Custom Properties) ─────────────── */
 @theme {
-  --color-forge-black: #0A0A0A;
-  --color-forge-charcoal: #1A1A1A;
-  --color-forge-steel: #2D2D2D;
-  --color-forge-ash: #8A8A8A;
-  --color-forge-smoke: #C4C4C4;
-  --color-forge-white: #F5F5F0;
-  --color-forge-ember: #FF4D00;
-  --color-forge-glow: #FF6B2B;
-  --color-forge-heat: #FF8C42;
-  --color-forge-blue: #0066FF;
+	--color-forge-black: #0a0a0a;
+	--color-forge-charcoal: #1a1a1a;
+	--color-forge-steel: #2d2d2d;
+	--color-forge-ash: #8a8a8a;
+	--color-forge-smoke: #c4c4c4;
+	--color-forge-white: #f5f5f0;
+	--color-forge-ember: #ff4d00;
+	--color-forge-glow: #ff6b2b;
+	--color-forge-heat: #ff8c42;
+	--color-forge-blue: #0066ff;
 
-  --font-display: 'Clash Display', sans-serif;
-  --font-heading: 'Satoshi', sans-serif;
-  --font-body: 'General Sans', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+	--font-display: 'Clash Display', sans-serif;
+	--font-heading: 'Satoshi', sans-serif;
+	--font-body: 'General Sans', sans-serif;
+	--font-mono: 'JetBrains Mono', monospace;
 }
 
 /* ─── Base Resets ────────────────────────────────────────── */
 @layer base {
-  html {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-  }
+	html {
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		text-rendering: optimizeLegibility;
+	}
 }
 ```
 
@@ -580,16 +575,16 @@ export type PostResponse = z.infer<typeof apiPostSchema>;
 
 ### 16. Lighthouse Minimums — Non-Negotiable
 
-| Metric           | Minimum | Target |
-| ---------------- | ------- | ------ |
-| Performance      | 95      | 99+    |
-| Accessibility    | 95      | 100    |
-| Best Practices   | 95      | 100    |
-| SEO              | 95      | 100    |
-| LCP              | < 2.0s  | < 1.2s |
-| FID / INP        | < 100ms | < 50ms |
-| CLS              | < 0.05  | 0      |
-| TTFB             | < 400ms | < 200ms|
+| Metric         | Minimum | Target  |
+| -------------- | ------- | ------- |
+| Performance    | 95      | 99+     |
+| Accessibility  | 95      | 100     |
+| Best Practices | 95      | 100     |
+| SEO            | 95      | 100     |
+| LCP            | < 2.0s  | < 1.2s  |
+| FID / INP      | < 100ms | < 50ms  |
+| CLS            | < 0.05  | 0       |
+| TTFB           | < 400ms | < 200ms |
 
 ### 17. Performance Enforcement
 
@@ -647,22 +642,58 @@ const { default: BlogEditor } = await import('$lib/components/BlogEditor.svelte'
 import DOMPurify from 'isomorphic-dompurify';
 
 function sanitizeHTML(dirty: string): string {
-  return DOMPurify.sanitize(dirty, {
-    ALLOWED_TAGS: [
-      'p', 'br', 'strong', 'em', 'u', 's', 'a', 'ul', 'ol', 'li',
-      'h1', 'h2', 'h3', 'h4', 'blockquote', 'code', 'pre', 'img',
-      'table', 'thead', 'tbody', 'tr', 'th', 'td', 'hr', 'figure',
-      'figcaption', 'sup', 'sub', 'mark',
-    ],
-    ALLOWED_ATTR: [
-      'href', 'src', 'alt', 'title', 'width', 'height', 'target',
-      'rel', 'class', 'id', 'loading', 'decoding',
-    ],
-    ALLOW_DATA_ATTR: false,
-    ADD_ATTR: ['target'],
-    FORBID_TAGS: ['script', 'style', 'iframe', 'form', 'input', 'textarea', 'select'],
-    FORBID_ATTR: ['onerror', 'onload', 'onclick', 'onmouseover'],
-  });
+	return DOMPurify.sanitize(dirty, {
+		ALLOWED_TAGS: [
+			'p',
+			'br',
+			'strong',
+			'em',
+			'u',
+			's',
+			'a',
+			'ul',
+			'ol',
+			'li',
+			'h1',
+			'h2',
+			'h3',
+			'h4',
+			'blockquote',
+			'code',
+			'pre',
+			'img',
+			'table',
+			'thead',
+			'tbody',
+			'tr',
+			'th',
+			'td',
+			'hr',
+			'figure',
+			'figcaption',
+			'sup',
+			'sub',
+			'mark'
+		],
+		ALLOWED_ATTR: [
+			'href',
+			'src',
+			'alt',
+			'title',
+			'width',
+			'height',
+			'target',
+			'rel',
+			'class',
+			'id',
+			'loading',
+			'decoding'
+		],
+		ALLOW_DATA_ATTR: false,
+		ADD_ATTR: ['target'],
+		FORBID_TAGS: ['script', 'style', 'iframe', 'form', 'input', 'textarea', 'select'],
+		FORBID_ATTR: ['onerror', 'onload', 'onclick', 'onmouseover']
+	});
 }
 ```
 
@@ -675,54 +706,54 @@ import { sequence } from '@sveltejs/kit/hooks';
 import { validateSession } from '$lib/server/auth';
 
 const authHandle: Handle = async ({ event, resolve }) => {
-  const sessionToken = event.cookies.get('session');
+	const sessionToken = event.cookies.get('session');
 
-  if (sessionToken) {
-    const session = await validateSession(sessionToken);
-    if (session) {
-      event.locals.user = session.user;
-    } else {
-      // Invalid session — clear the cookie immediately
-      event.cookies.delete('session', { path: '/' });
-    }
-  }
+	if (sessionToken) {
+		const session = await validateSession(sessionToken);
+		if (session) {
+			event.locals.user = session.user;
+		} else {
+			// Invalid session — clear the cookie immediately
+			event.cookies.delete('session', { path: '/' });
+		}
+	}
 
-  return resolve(event);
+	return resolve(event);
 };
 
 const guardHandle: Handle = async ({ event, resolve }) => {
-  // Protect all /admin routes
-  if (event.url.pathname.startsWith('/admin')) {
-    if (!event.locals.user?.isAdmin) {
-      return new Response(null, {
-        status: 303,
-        headers: { Location: '/auth/login?redirect=' + encodeURIComponent(event.url.pathname) },
-      });
-    }
-  }
+	// Protect all /admin routes
+	if (event.url.pathname.startsWith('/admin')) {
+		if (!event.locals.user?.isAdmin) {
+			return new Response(null, {
+				status: 303,
+				headers: { Location: '/auth/login?redirect=' + encodeURIComponent(event.url.pathname) }
+			});
+		}
+	}
 
-  // Protect all /api routes that mutate data
-  if (event.url.pathname.startsWith('/api') && event.request.method !== 'GET') {
-    if (!event.locals.user) {
-      return new Response(JSON.stringify({ error: 'Unauthorized' }), {
-        status: 401,
-        headers: { 'Content-Type': 'application/json' },
-      });
-    }
-  }
+	// Protect all /api routes that mutate data
+	if (event.url.pathname.startsWith('/api') && event.request.method !== 'GET') {
+		if (!event.locals.user) {
+			return new Response(JSON.stringify({ error: 'Unauthorized' }), {
+				status: 401,
+				headers: { 'Content-Type': 'application/json' }
+			});
+		}
+	}
 
-  return resolve(event);
+	return resolve(event);
 };
 
 const securityHeaders: Handle = async ({ event, resolve }) => {
-  const response = await resolve(event);
+	const response = await resolve(event);
 
-  response.headers.set('X-Content-Type-Options', 'nosniff');
-  response.headers.set('X-Frame-Options', 'DENY');
-  response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
-  response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+	response.headers.set('X-Content-Type-Options', 'nosniff');
+	response.headers.set('X-Frame-Options', 'DENY');
+	response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+	response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
 
-  return response;
+	return response;
 };
 
 export const handle = sequence(securityHeaders, authHandle, guardHandle);
@@ -738,47 +769,44 @@ import { postSchema } from '$lib/schemas/post';
 import { rateLimit } from '$lib/server/rate-limit';
 
 export const POST: RequestHandler = async ({ request, locals }) => {
-  // 1. Authentication — already handled by hooks, but verify
-  if (!locals.user?.isAdmin) {
-    error(403, 'Forbidden');
-  }
+	// 1. Authentication — already handled by hooks, but verify
+	if (!locals.user?.isAdmin) {
+		error(403, 'Forbidden');
+	}
 
-  // 2. Rate limiting
-  const rateLimitResult = await rateLimit(locals.user.id, 'create-post', {
-    maxRequests: 30,
-    windowMs: 60_000,
-  });
+	// 2. Rate limiting
+	const rateLimitResult = await rateLimit(locals.user.id, 'create-post', {
+		maxRequests: 30,
+		windowMs: 60_000
+	});
 
-  if (!rateLimitResult.allowed) {
-    error(429, `Rate limit exceeded. Try again in ${rateLimitResult.retryAfterMs}ms`);
-  }
+	if (!rateLimitResult.allowed) {
+		error(429, `Rate limit exceeded. Try again in ${rateLimitResult.retryAfterMs}ms`);
+	}
 
-  // 3. Content-Type validation
-  const contentType = request.headers.get('content-type');
-  if (!contentType?.includes('application/json')) {
-    error(415, 'Content-Type must be application/json');
-  }
+	// 3. Content-Type validation
+	const contentType = request.headers.get('content-type');
+	if (!contentType?.includes('application/json')) {
+		error(415, 'Content-Type must be application/json');
+	}
 
-  // 4. Parse and validate body
-  let body: unknown;
-  try {
-    body = await request.json();
-  } catch {
-    error(400, 'Invalid JSON body');
-  }
+	// 4. Parse and validate body
+	let body: unknown;
+	try {
+		body = await request.json();
+	} catch {
+		error(400, 'Invalid JSON body');
+	}
 
-  const parseResult = postSchema.safeParse(body);
-  if (!parseResult.success) {
-    return json(
-      { errors: parseResult.error.flatten().fieldErrors },
-      { status: 400 },
-    );
-  }
+	const parseResult = postSchema.safeParse(body);
+	if (!parseResult.success) {
+		return json({ errors: parseResult.error.flatten().fieldErrors }, { status: 400 });
+	}
 
-  // 5. Business logic with validated, typed data
-  const post = await createPost(parseResult.data, locals.user.id);
+	// 5. Business logic with validated, typed data
+	const post = await createPost(parseResult.data, locals.user.id);
 
-  return json(post, { status: 201 });
+	return json(post, { status: 201 });
 };
 ```
 
@@ -803,13 +831,13 @@ export const POST: RequestHandler = async ({ request, locals }) => {
 
 ### 23. Testing Strategy
 
-| Layer               | Tool                 | Coverage Target |
-| ------------------- | -------------------- | --------------- |
-| Unit (logic)        | Vitest               | 90%+            |
-| Component           | Vitest + Testing Lib | Critical paths  |
-| Integration (API)   | Vitest               | All endpoints   |
-| E2E                 | Playwright           | Happy paths     |
-| Visual regression   | Playwright snapshots | Key pages       |
+| Layer             | Tool                 | Coverage Target |
+| ----------------- | -------------------- | --------------- |
+| Unit (logic)      | Vitest               | 90%+            |
+| Component         | Vitest + Testing Lib | Critical paths  |
+| Integration (API) | Vitest               | All endpoints   |
+| E2E               | Playwright           | Happy paths     |
+| Visual regression | Playwright snapshots | Key pages       |
 
 ### 24. Test Structure
 
@@ -819,46 +847,46 @@ import { describe, it, expect } from 'vitest';
 import { generateSlug } from './slug';
 
 describe('generateSlug', () => {
-  // ─── Happy Path ─────────────────────────────────────────
-  it('converts a simple title to a slug', () => {
-    expect(generateSlug('Hello World')).toBe('hello-world');
-  });
+	// ─── Happy Path ─────────────────────────────────────────
+	it('converts a simple title to a slug', () => {
+		expect(generateSlug('Hello World')).toBe('hello-world');
+	});
 
-  it('handles special characters', () => {
-    expect(generateSlug("What's New in SvelteKit 2.0?")).toBe('whats-new-in-sveltekit-20');
-  });
+	it('handles special characters', () => {
+		expect(generateSlug("What's New in SvelteKit 2.0?")).toBe('whats-new-in-sveltekit-20');
+	});
 
-  it('collapses consecutive hyphens', () => {
-    expect(generateSlug('Hello---World')).toBe('hello-world');
-  });
+	it('collapses consecutive hyphens', () => {
+		expect(generateSlug('Hello---World')).toBe('hello-world');
+	});
 
-  it('trims leading and trailing hyphens', () => {
-    expect(generateSlug('--hello-world--')).toBe('hello-world');
-  });
+	it('trims leading and trailing hyphens', () => {
+		expect(generateSlug('--hello-world--')).toBe('hello-world');
+	});
 
-  // ─── Edge Cases ─────────────────────────────────────────
-  it('handles unicode characters', () => {
-    expect(generateSlug('Über Cool Café')).toBe('uber-cool-cafe');
-  });
+	// ─── Edge Cases ─────────────────────────────────────────
+	it('handles unicode characters', () => {
+		expect(generateSlug('Über Cool Café')).toBe('uber-cool-cafe');
+	});
 
-  it('handles empty string', () => {
-    expect(generateSlug('')).toBe('');
-  });
+	it('handles empty string', () => {
+		expect(generateSlug('')).toBe('');
+	});
 
-  it('handles string with only special characters', () => {
-    expect(generateSlug('!@#$%')).toBe('');
-  });
+	it('handles string with only special characters', () => {
+		expect(generateSlug('!@#$%')).toBe('');
+	});
 
-  // ─── Boundary Conditions ────────────────────────────────
-  it('truncates at 200 characters', () => {
-    const longTitle = 'a'.repeat(300);
-    expect(generateSlug(longTitle).length).toBeLessThanOrEqual(200);
-  });
+	// ─── Boundary Conditions ────────────────────────────────
+	it('truncates at 200 characters', () => {
+		const longTitle = 'a'.repeat(300);
+		expect(generateSlug(longTitle).length).toBeLessThanOrEqual(200);
+	});
 
-  it('does not break words at truncation boundary', () => {
-    const slug = generateSlug('a-'.repeat(150) + 'final');
-    expect(slug).not.toEndWith('-');
-  });
+	it('does not break words at truncation boundary', () => {
+		const slug = generateSlug('a-'.repeat(150) + 'final');
+		expect(slug).not.toEndWith('-');
+	});
 });
 ```
 
@@ -878,16 +906,16 @@ Every commit message follows Conventional Commits:
 [optional footer — BREAKING CHANGE:, Fixes #123, etc.]
 ```
 
-| Type       | Usage                                        |
-| ---------- | -------------------------------------------- |
-| `feat`     | New feature visible to users                 |
-| `fix`      | Bug fix visible to users                     |
-| `refactor` | Code change that neither fixes nor adds      |
-| `perf`     | Performance improvement                      |
-| `test`     | Adding or fixing tests                       |
-| `docs`     | Documentation only                           |
-| `chore`    | Build, tooling, CI changes                   |
-| `style`    | Formatting, whitespace (not CSS)             |
+| Type       | Usage                                   |
+| ---------- | --------------------------------------- |
+| `feat`     | New feature visible to users            |
+| `fix`      | Bug fix visible to users                |
+| `refactor` | Code change that neither fixes nor adds |
+| `perf`     | Performance improvement                 |
+| `test`     | Adding or fixing tests                  |
+| `docs`     | Documentation only                      |
+| `chore`    | Build, tooling, CI changes              |
+| `style`    | Formatting, whitespace (not CSS)        |
 
 ### 26. Branch Strategy
 
@@ -960,7 +988,7 @@ src/
 - **`@throws` documents every error type** a function can throw.
 - **`@example` is required** for utility functions and complex APIs.
 
-```typescript
+````typescript
 /**
  * Calculates the estimated reading time for a blog post.
  *
@@ -979,21 +1007,18 @@ src/
  * calculateReadTime(50, 0);     // => 1 (minimum)
  * ```
  */
-function calculateReadTime(
-  wordCount: number,
-  codeBlockWordCount: number = 0,
-): number {
-  const PROSE_WPM = 238;
-  const CODE_WPM = 100;
-  const MIN_READ_TIME = 1;
+function calculateReadTime(wordCount: number, codeBlockWordCount: number = 0): number {
+	const PROSE_WPM = 238;
+	const CODE_WPM = 100;
+	const MIN_READ_TIME = 1;
 
-  const proseWords = wordCount - codeBlockWordCount;
-  const proseMinutes = proseWords / PROSE_WPM;
-  const codeMinutes = codeBlockWordCount / CODE_WPM;
+	const proseWords = wordCount - codeBlockWordCount;
+	const proseMinutes = proseWords / PROSE_WPM;
+	const codeMinutes = codeBlockWordCount / CODE_WPM;
 
-  return Math.max(MIN_READ_TIME, Math.ceil(proseMinutes + codeMinutes));
+	return Math.max(MIN_READ_TIME, Math.ceil(proseMinutes + codeMinutes));
 }
-```
+````
 
 ---
 
@@ -1064,4 +1089,4 @@ Before submitting any code, verify:
 
 ---
 
-*This standard is a living document. It represents the minimum bar for code quality. Meeting this standard is expected. Exceeding it is the goal.*
+_This standard is a living document. It represents the minimum bar for code quality. Meeting this standard is expected. Exceeding it is the goal._

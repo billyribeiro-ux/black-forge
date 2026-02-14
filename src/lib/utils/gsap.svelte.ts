@@ -1,10 +1,10 @@
 /**
  * GSAP utilities for Svelte 5 with proper cleanup and lifecycle management.
- * 
+ *
  * This module provides hooks and utilities for integrating GSAP animations
  * with Svelte 5's reactive system. All animations are automatically cleaned up
  * when components unmount to prevent memory leaks.
- * 
+ *
  * @module gsap.svelte
  */
 
@@ -18,11 +18,11 @@ if (typeof window !== 'undefined') {
 
 /**
  * Hook for GSAP animations with automatic cleanup.
- * 
+ *
  * This hook provides a way to create GSAP animations that are automatically
  * cleaned up when the component unmounts. It also provides an option to
  * watch dependencies and re-run the animation when they change.
- * 
+ *
  * @param {function} animationFn - The function that returns the GSAP animation.
  * @param {function} [dependencies] - The function that returns the dependencies to watch.
  * @returns {void}
