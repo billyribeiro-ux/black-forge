@@ -1,8 +1,8 @@
 /**
  * E2E tests for Navigation component.
- * 
+ *
  * Tests desktop and mobile navigation, scroll behavior, and menu interactions.
- * 
+ *
  * @module tests/e2e/navigation.spec
  */
 
@@ -104,7 +104,10 @@ test.describe('Navigation', () => {
 		await page.getByRole('button', { name: /Toggle menu/i }).click();
 
 		// Click Services link in mobile menu
-		await page.getByRole('link', { name: /^Services$/i }).last().click();
+		await page
+			.getByRole('link', { name: /^Services$/i })
+			.last()
+			.click();
 
 		// Should navigate to services page
 		await expect(page).toHaveURL('/services');

@@ -1,15 +1,19 @@
 /**
  * E2E tests for all pages.
- * 
+ *
  * Smoke tests to ensure all pages load correctly and have basic content.
- * 
+ *
  * @module tests/e2e/all-pages.spec
  */
 
 import { test, expect } from '@playwright/test';
 
 const pages = [
-	{ path: '/', title: /Blackforge Digital — Forged for Performance/, heading: /We Don't Build Websites/ },
+	{
+		path: '/',
+		title: /Blackforge Digital — Forged for Performance/,
+		heading: /We Don't Build Websites/
+	},
 	{ path: '/services', title: /Services/, heading: /Everything You Need/ },
 	{ path: '/portfolio', title: /Portfolio/, heading: /Proof\. Not Promises/ },
 	{ path: '/about', title: /About Us/, heading: /Built Different/ },

@@ -1,8 +1,8 @@
 /**
  * E2E tests for Contact page and form.
- * 
+ *
  * Tests form validation, submission, and all interactive elements.
- * 
+ *
  * @module tests/e2e/contact.spec
  */
 
@@ -115,7 +115,9 @@ test.describe('Contact Page', () => {
 
 	test('should display map section', async ({ page }) => {
 		await expect(page.getByText(/Wolcott, CT 06716/i)).toBeVisible();
-		await expect(page.getByText(/Serving businesses across Connecticut and nationwide/i)).toBeVisible();
+		await expect(
+			page.getByText(/Serving businesses across Connecticut and nationwide/i)
+		).toBeVisible();
 	});
 
 	test('should be responsive on mobile', async ({ page }) => {
@@ -139,7 +141,10 @@ test.describe('Contact Page', () => {
 		await expect(page).toHaveTitle(/Contact Us — Start Your Project/);
 
 		const metaDescription = page.locator('meta[name="description"]');
-		await expect(metaDescription).toHaveAttribute('content', /Ready to build something exceptional/);
+		await expect(metaDescription).toHaveAttribute(
+			'content',
+			/Ready to build something exceptional/
+		);
 	});
 
 	test('should validate email format', async ({ page }) => {

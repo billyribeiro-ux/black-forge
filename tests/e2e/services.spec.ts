@@ -1,6 +1,6 @@
 /**
  * E2E tests for Services page.
- * 
+ *
  * @module tests/e2e/services.spec
  */
 
@@ -44,7 +44,9 @@ test.describe('Services Page', () => {
 	});
 
 	test('should display comparison table', async ({ page }) => {
-		await expect(page.getByRole('heading', { name: /Blackforge vs\. Typical Agency/i })).toBeVisible();
+		await expect(
+			page.getByRole('heading', { name: /Blackforge vs\. Typical Agency/i })
+		).toBeVisible();
 		await expect(page.getByText(/Custom-built from scratch/i)).toBeVisible();
 		await expect(page.getByText(/Template-based/i)).toBeVisible();
 	});

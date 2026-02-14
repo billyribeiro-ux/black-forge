@@ -1,6 +1,6 @@
 /**
  * E2E tests for Pricing page.
- * 
+ *
  * @module tests/e2e/pricing.spec
  */
 
@@ -38,11 +38,11 @@ test.describe('Pricing Page', () => {
 		// Foundation features
 		await expect(page.getByText(/Up to 10 pages/i)).toBeVisible();
 		await expect(page.getByText(/Mobile responsive/i)).toBeVisible();
-		
+
 		// Professional features
 		await expect(page.getByText(/Up to 25 pages/i)).toBeVisible();
 		await expect(page.getByText(/Advanced animations/i)).toBeVisible();
-		
+
 		// Enterprise features
 		await expect(page.getByText(/Unlimited pages/i)).toBeVisible();
 		await expect(page.getByText(/Dedicated account manager/i)).toBeVisible();

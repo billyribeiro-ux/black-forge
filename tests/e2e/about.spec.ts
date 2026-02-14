@@ -1,6 +1,6 @@
 /**
  * E2E tests for About page.
- * 
+ *
  * @module tests/e2e/about.spec
  */
 
@@ -22,7 +22,7 @@ test.describe('About Page', () => {
 
 	test('should display values section', async ({ page }) => {
 		await expect(page.getByRole('heading', { name: /Principles\. Not Platitudes/i })).toBeVisible();
-		
+
 		// Check all six values
 		await expect(page.getByText(/Performance Is Non-Negotiable/i)).toBeVisible();
 		await expect(page.getByText(/Code Quality Over Speed/i)).toBeVisible();
@@ -34,7 +34,7 @@ test.describe('About Page', () => {
 
 	test('should display team section', async ({ page }) => {
 		await expect(page.getByRole('heading', { name: /The Team/i })).toBeVisible();
-		
+
 		// Check team members
 		await expect(page.getByText(/Alex Rivera/i)).toBeVisible();
 		await expect(page.getByText(/Founder & Lead Engineer/i)).toBeVisible();
@@ -51,7 +51,7 @@ test.describe('About Page', () => {
 	test('should display toolkit section', async ({ page }) => {
 		await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
 		await expect(page.getByRole('heading', { name: /Our Toolkit/i })).toBeVisible();
-		
+
 		// Check some technologies
 		await expect(page.getByText(/SvelteKit/i)).toBeVisible();
 		await expect(page.getByText(/TypeScript/i)).toBeVisible();

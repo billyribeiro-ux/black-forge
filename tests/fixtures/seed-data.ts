@@ -1,8 +1,8 @@
 /**
  * Seed data for E2E testing.
- * 
+ *
  * Provides realistic test data for all components and pages.
- * 
+ *
  * @module tests/fixtures/seed-data
  */
 
@@ -107,11 +107,7 @@ export const navLinks = [
 	{ label: 'Blog', href: '/blog' }
 ];
 
-export const serviceCategories = [
-	'Web Development',
-	'App Development',
-	'SEO & Growth'
-];
+export const serviceCategories = ['Web Development', 'App Development', 'SEO & Growth'];
 
 export const pricingTiers = [
 	{ name: 'Foundation', price: '$8,000' },

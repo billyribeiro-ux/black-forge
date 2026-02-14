@@ -1,6 +1,6 @@
 /**
  * E2E tests for Process page.
- * 
+ *
  * @module tests/e2e/process.spec
  */
 
@@ -16,12 +16,20 @@ test.describe('Process Page', () => {
 	});
 
 	test('should display all six phases', async ({ page }) => {
-		await expect(page.getByRole('heading', { name: /Phase 1 — Discovery & Strategy/i })).toBeVisible();
-		await expect(page.getByRole('heading', { name: /Phase 2 — Design & Prototyping/i })).toBeVisible();
-		await expect(page.getByRole('heading', { name: /Phase 3 — Engineering & Development/i })).toBeVisible();
+		await expect(
+			page.getByRole('heading', { name: /Phase 1 — Discovery & Strategy/i })
+		).toBeVisible();
+		await expect(
+			page.getByRole('heading', { name: /Phase 2 — Design & Prototyping/i })
+		).toBeVisible();
+		await expect(
+			page.getByRole('heading', { name: /Phase 3 — Engineering & Development/i })
+		).toBeVisible();
 		await expect(page.getByRole('heading', { name: /Phase 4 — Testing & QA/i })).toBeVisible();
 		await expect(page.getByRole('heading', { name: /Phase 5 — Launch/i })).toBeVisible();
-		await expect(page.getByRole('heading', { name: /Phase 6 — Growth & Optimization/i })).toBeVisible();
+		await expect(
+			page.getByRole('heading', { name: /Phase 6 — Growth & Optimization/i })
+		).toBeVisible();
 	});
 
 	test('should display phase deliverables', async ({ page }) => {

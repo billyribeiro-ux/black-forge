@@ -1,8 +1,8 @@
 /**
  * E2E tests for Home page.
- * 
+ *
  * Tests all sections, interactions, and animations on the home page.
- * 
+ *
  * @module tests/e2e/home.spec
  */
 
@@ -82,9 +82,7 @@ test.describe('Home Page', () => {
 	});
 
 	test('should display testimonials section', async ({ page }) => {
-		await expect(
-			page.getByRole('heading', { name: /Don't Take Our Word For It/i })
-		).toBeVisible();
+		await expect(page.getByRole('heading', { name: /Don't Take Our Word For It/i })).toBeVisible();
 
 		// Check for testimonial content
 		await expect(page.getByText(/revenue machine/i)).toBeVisible();

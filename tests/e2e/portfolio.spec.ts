@@ -1,6 +1,6 @@
 /**
  * E2E tests for Portfolio page.
- * 
+ *
  * @module tests/e2e/portfolio.spec
  */
 

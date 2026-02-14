@@ -1,6 +1,6 @@
 /**
  * E2E tests for Blog page.
- * 
+ *
  * @module tests/e2e/blog.spec
  */
 
@@ -68,10 +68,10 @@ test.describe('Blog Page', () => {
 
 	test('should handle newsletter signup', async ({ page }) => {
 		await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
-		
+
 		const emailInput = page.getByPlaceholder(/your@email\.com/i);
 		await emailInput.fill('test@example.com');
-		
+
 		const subscribeButton = page.getByRole('button', { name: /Subscribe/i });
 		await expect(subscribeButton).toBeVisible();
 	});
